@@ -15,6 +15,7 @@
 		D41A33D92517A3C700443511 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D41A33D72517A3C700443511 /* LaunchScreen.storyboard */; };
 		D41A33E32518FF4100443511 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D41A33E22518FF4100443511 /* Main.storyboard */; };
 		D41A33E5251903DD00443511 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41A33E4251903DD00443511 /* DesignableView.swift */; };
+		D4DD97AF251F7D3C0071E7F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DD97AE251F7D3C0071E7F5 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D41A33DA2517A3C700443511 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D41A33E22518FF4100443511 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D41A33E4251903DD00443511 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		D4DD97AE251F7D3C0071E7F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				D41A33DA2517A3C700443511 /* Info.plist */,
 				D41A33D42517A3C700443511 /* Preview Content */,
 				D41A33E22518FF4100443511 /* Main.storyboard */,
+				D4DD97AE251F7D3C0071E7F5 /* ViewController.swift */,
 				D41A33E4251903DD00443511 /* DesignableView.swift */,
 			);
 			path = IKIK;
@@ -153,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4DD97AF251F7D3C0071E7F5 /* ViewController.swift in Sources */,
 				D41A33E5251903DD00443511 /* DesignableView.swift in Sources */,
 				D41A33CD2517A3C500443511 /* AppDelegate.swift in Sources */,
 				D41A33CF2517A3C500443511 /* SceneDelegate.swift in Sources */,
