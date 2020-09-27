@@ -12,7 +12,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var pwTextField: UITextField!
     @IBOutlet weak var telTextField: UITextField!
       
     override func viewDidLoad() {
