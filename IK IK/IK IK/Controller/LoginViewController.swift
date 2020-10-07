@@ -42,9 +42,19 @@ class LoginViewController: UIViewController {
                 
             case .success(let user):
                 //                self?.performSegue(withIdentifier: "loginSegue", sender: user)
-                let mainScreen = self?.storyboard!.instantiateViewController(withIdentifier: "MainScreen") as? MainViewController
-                self?.navigationController?.pushViewController(mainScreen!, animated: true)
-                mainScreen!.user = user
+//                let mainScreen = self?.storyboard!.instantiateViewController(withIdentifier: "MainScreen") as? TabViewController
+//                self?.navigationController?.pushViewController(mainScreen!, animated: true)
+//                mainScreen!.user = user
+                
+                // after login is done, maybe put this in the login web service completion block
+
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
+                UserDefaults.standard.set(user.name, forKey: "username")
+                
+                // This is to get the SceneDelegate object from your view controller
+                // then call the change root view controller function to change to main tab bar
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
                 
             case .failure(let error):
                 

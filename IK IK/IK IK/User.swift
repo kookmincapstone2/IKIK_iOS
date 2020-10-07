@@ -9,7 +9,7 @@
 import Foundation
 
 struct User: Decodable {
-    let id: Int
+    let user_id: Int
     let name: String
     let email: String?
     let pw: String?

@@ -22,6 +22,9 @@
 		D467333E252206C5005363EB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467333D252206C5005363EB /* MainViewController.swift */; };
 		D46733402522074F005363EB /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467333F2522074F005363EB /* ErrorResponse.swift */; };
 		D467334225220F45005363EB /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467334125220F45005363EB /* FormTextField.swift */; };
+		D4673371252DB99E005363EB /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4673370252DB99D005363EB /* TabViewController.swift */; };
+		D4673373252DCC91005363EB /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4673372252DCC90005363EB /* MyPageViewController.swift */; };
+		D4673376252DDFE1005363EB /* LectureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4673375252DDFE1005363EB /* LectureCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		D467333D252206C5005363EB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D467333F2522074F005363EB /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		D467334125220F45005363EB /* FormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
+		D4673370252DB99D005363EB /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		D4673372252DCC90005363EB /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		D4673375252DDFE1005363EB /* LectureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,7 @@
 				D467331F2522064B005363EB /* SceneDelegate.swift */,
 				D46733212522064B005363EB /* ViewController.swift */,
 				D46733232522064B005363EB /* Main.storyboard */,
+				D4673374252DCCC2005363EB /* Controller */,
 				D467334125220F45005363EB /* FormTextField.swift */,
 				D467332625220653005363EB /* Assets.xcassets */,
 				D467332825220653005363EB /* LaunchScreen.storyboard */,
@@ -87,11 +94,21 @@
 				D46733352522068F005363EB /* NetworkingService.swift */,
 				D467333F2522074F005363EB /* ErrorResponse.swift */,
 				D467333725220699005363EB /* AlertService.swift */,
-				D4673339252206A0005363EB /* LoginViewController.swift */,
-				D467333B252206BA005363EB /* SignUpViewController.swift */,
-				D467333D252206C5005363EB /* MainViewController.swift */,
 			);
 			path = "IK IK";
+			sourceTree = "<group>";
+		};
+		D4673374252DCCC2005363EB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D4673372252DCC90005363EB /* MyPageViewController.swift */,
+				D4673339252206A0005363EB /* LoginViewController.swift */,
+				D4673370252DB99D005363EB /* TabViewController.swift */,
+				D467333B252206BA005363EB /* SignUpViewController.swift */,
+				D4673375252DDFE1005363EB /* LectureCell.swift */,
+				D467333D252206C5005363EB /* MainViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,10 +186,13 @@
 				D467333425220688005363EB /* Login.swift in Sources */,
 				D467333825220699005363EB /* AlertService.swift in Sources */,
 				D46733222522064B005363EB /* ViewController.swift in Sources */,
+				D4673371252DB99E005363EB /* TabViewController.swift in Sources */,
 				D467333A252206A0005363EB /* LoginViewController.swift in Sources */,
 				D46733362522068F005363EB /* NetworkingService.swift in Sources */,
 				D467333C252206BA005363EB /* SignUpViewController.swift in Sources */,
 				D467334225220F45005363EB /* FormTextField.swift in Sources */,
+				D4673376252DDFE1005363EB /* LectureCell.swift in Sources */,
+				D4673373252DCC91005363EB /* MyPageViewController.swift in Sources */,
 				D467331E2522064B005363EB /* AppDelegate.swift in Sources */,
 				D46733402522074F005363EB /* ErrorResponse.swift in Sources */,
 				D46733202522064B005363EB /* SceneDelegate.swift in Sources */,

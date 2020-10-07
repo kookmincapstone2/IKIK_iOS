@@ -51,7 +51,7 @@ class NetworkingService {
                 if let unwrappedData = data {
                     
                     do {
-                        let json = try JSONSerialization.jsonObject(with: unwrappedData, options: [])
+                        let json = try JSONSerialization.jsonObject(with: unwrappedData, options: .fragmentsAllowed)
                         print(json)
                         
                         if let user = try? JSONDecoder().decode(User.self, from: unwrappedData) {
