@@ -48,9 +48,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     func formDataRequest(name: String, email: String, pw: String, student_id: String, phone: String) {
        
-        let parameters = ["name": name,
-                          "email": email,
+        let parameters = ["email": email,
                           "pw": pw,
+                          "name": name,
                           "student_id": student_id,
                           "phone": phone]
         
@@ -59,8 +59,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             switch result {
                 
             case .success(let user):
-                // dismiss segue
-                break
+                guard let alert = self?.alertService.alert(message: "\(user.name)님 회원가입 성공") else { return }
+                self?.present(alert, animated: true)
             
             case .failure(let error):
                 // alert to fill all parameter
