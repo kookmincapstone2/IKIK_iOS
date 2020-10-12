@@ -10,7 +10,7 @@ import Foundation
 
 enum MyResult<T, E: Error>{
     
-    case success(T)
+    case success(T?)
     case failure(E)
 }
 
@@ -19,7 +19,7 @@ class NetworkingService {
     let baseUrl = "http://3.34.158.76:8000/api"
     
     func handleResponse(for request: URLRequest,
-                        completion: @escaping (Result<User, Error>) -> Void) {
+                        completion: @escaping (Result<Any, Error>) -> Void) {
         
         let session = URLSession.shared
         
@@ -35,10 +35,41 @@ class NetworkingService {
                 print(unwrappedResponse.statusCode)
                 
                 switch unwrappedResponse.statusCode {
-                
+                    
                 case 200..<300 :
                     print("success")
-                
+                    
+                    if let unwrappedData = data {
+                        
+                        do {
+                            let json = try JSONSerialization.jsonObject(with: unwrappedData, options: .allowFragments)
+                            print(json)
+                            
+                            if String(data: unwrappedData, encoding: .utf8) == "{\n}" {
+                                completion(.success(AnyObject.self))
+                            }
+                            
+                            if let user = try? JSONDecoder().decode(User.self, from: unwrappedData) {
+                                completion(.success(user))
+                                
+                            } else {
+                                completion(.success(AnyObject.self))
+//                            } else {
+//                                let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: unwrappedData)
+//                                completion(.failure(errorResponse))
+                            }
+                            
+                        } catch {
+                            completion(.failure(error))
+                        }
+                    }
+                case 400:
+                    // 요청 형식 맞지않음
+                    break
+                    
+                case 401:
+                    completion(.failure(AuthorizationError.existingEmail))
+                    
                 default:
                     print("failure")
                 }
@@ -48,24 +79,7 @@ class NetworkingService {
                     return
                 }
                 
-                if let unwrappedData = data {
-                    
-                    do {
-                        let json = try JSONSerialization.jsonObject(with: unwrappedData, options: .fragmentsAllowed)
-                        print(json)
-                        
-                        if let user = try? JSONDecoder().decode(User.self, from: unwrappedData) {
-                            completion(.success(user))
-                            
-                        } else {
-                            let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: unwrappedData)
-                            completion(.failure(errorResponse))
-                        }
-                        
-                    } catch {
-                        completion(.failure(error))
-                    }
-                }
+                
             }
         }
         
@@ -74,7 +88,7 @@ class NetworkingService {
     
     func request(endpoint: String,
                  parameters: [String: Any],
-                 completion: @escaping (Result<User, Error>) -> Void) {
+                 completion: @escaping (Result<Any, Error>) -> Void) {
         
         guard let url = URL(string: baseUrl + endpoint) else {
             completion(.failure(NetworkingError.badUrl))
@@ -103,34 +117,39 @@ class NetworkingService {
         handleResponse(for: request, completion: completion)
     }
     
-    func request(endpoint: String,
-                 loginObject: Login,
-                 completion: @escaping (Result<User, Error>) -> Void) {
-        
-        guard let url = URL(string: baseUrl + endpoint) else {
-            completion(.failure(NetworkingError.badUrl))
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        
-        do {
-            let loginData = try JSONEncoder().encode(loginObject)
-            request.httpBody = loginData
-            
-        } catch {
-            completion(.failure(NetworkingError.badEncoding))
-        }
-        
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        handleResponse(for: request, completion: completion)
-    }
+    //    func request(endpoint: String,
+    //                 loginObject: Login,
+    //                 completion: @escaping (Result<User, Error>) -> Void) {
+    //
+    //        guard let url = URL(string: baseUrl + endpoint) else {
+    //            completion(.failure(NetworkingError.badUrl))
+    //            return
+    //        }
+    //
+    //        var request = URLRequest(url: url)
+    //
+    //        do {
+    //            let loginData = try JSONEncoder().encode(loginObject)
+    //            request.httpBody = loginData
+    //
+    //        } catch {
+    //            completion(.failure(NetworkingError.badEncoding))
+    //        }
+    //
+    //        request.httpMethod = "POST"
+    //        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    //
+    //        handleResponse(for: request, completion: completion)
+    //    }
 }
 
 enum NetworkingError: Error {
     case badUrl
     case badResponse
     case badEncoding
+}
+
+enum AuthorizationError: Error {
+    case existingEmail
+    case existingPhone
 }

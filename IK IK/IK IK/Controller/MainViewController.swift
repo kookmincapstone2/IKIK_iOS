@@ -40,3 +40,14 @@ class MainViewController: UIViewController, UITableViewDataSource {
         return cell
     }
 }
+
+
+//// Parse JSON data
+//       if let data = data {
+//           self.loans = self.parseJsonData(data: data)
+//
+//           // Reload table view
+//           OperationQueue.main.addOperation({
+//               self.tableView.reloadData()
+//           })
+//       }

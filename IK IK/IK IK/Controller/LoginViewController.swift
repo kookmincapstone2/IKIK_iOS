@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
-                UserDefaults.standard.set(user.name, forKey: "username")
+                UserDefaults.standard.set((user as! User).name, forKey: "username")
                 
                 // This is to get the SceneDelegate object from your view controller
                 // then call the change root view controller function to change to main tab bar
@@ -64,23 +64,23 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func jsonRequest(email: String, pw: String) {
-        
-        let login = Login(email: email, pw: pw)
-        
-        networkingService.request(endpoint: "/authorization/login", loginObject: login) { [weak self] (result) in
-            
-            switch result {
-                
-            case .success(let user): self?.performSegue(withIdentifier: "loginSegue", sender: user)
-                
-            case .failure(let error):
-                
-                guard let alert = self?.alertService.alert(message: error.localizedDescription) else { return }
-                self?.present(alert, animated: true)
-            }
-        }
-    }
+//    func jsonRequest(email: String, pw: String) {
+//
+//        let login = Login(email: email, pw: pw)
+//
+//        networkingService.request(endpoint: "/authorization/login", loginObject: login) { [weak self] (result) in
+//
+//            switch result {
+//
+//            case .success(let user): self?.performSegue(withIdentifier: "loginSegue", sender: user)
+//
+//            case .failure(let error):
+//
+//                guard let alert = self?.alertService.alert(message: error.localizedDescription) else { return }
+//                self?.present(alert, animated: true)
+//            }
+//        }
+//    }
     
     //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     //

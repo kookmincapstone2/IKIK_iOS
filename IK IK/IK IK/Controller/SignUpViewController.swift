@@ -53,14 +53,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                           "name": name,
                           "student_id": student_id,
                           "phone": phone]
-        
-        networkingService.request(endpoint: "/authurization/signup", parameters: parameters) { [weak self] (result) in
+        print(parameters)
+        networkingService.request(endpoint: "/authorization/signup", parameters: parameters) { [weak self] (result) in
             print(result)
             switch result {
                 
-            case .success(let user):
-                guard let alert = self?.alertService.alert(message: "\(user.name)님 회원가입 성공") else { return }
-                self?.present(alert, animated: true)
+            case .success:
+//                guard let alert = self?.alertService.alert(message: "\(user.name)님 회원가입 성공") else { return }
+//                self?.present(alert, animated: true)
+                self?.dismiss(animated: true, completion: nil)
+                break
             
             case .failure(let error):
                 // alert to fill all parameter
