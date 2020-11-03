@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4296F2A25484E6D00FDF4B1 /* RoomEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4296F2925484E6D00FDF4B1 /* RoomEditViewController.swift */; };
+		D457848D253821D100A5346C /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457848C253821D100A5346C /* Room.swift */; };
+		D457848F2539912500A5346C /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457848E2539912500A5346C /* RecordViewController.swift */; };
+		D4578491253DCFE300A5346C /* RoomCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4578490253DCFE300A5346C /* RoomCreateViewController.swift */; };
+		D457849325418FB300A5346C /* AttendanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457849225418FB300A5346C /* AttendanceCell.swift */; };
 		D467331E2522064B005363EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467331D2522064B005363EB /* AppDelegate.swift */; };
 		D46733202522064B005363EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467331F2522064B005363EB /* SceneDelegate.swift */; };
-		D46733222522064B005363EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46733212522064B005363EB /* ViewController.swift */; };
 		D46733252522064B005363EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46733232522064B005363EB /* Main.storyboard */; };
 		D467332725220653005363EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D467332625220653005363EB /* Assets.xcassets */; };
 		D467332A25220653005363EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D467332825220653005363EB /* LaunchScreen.storyboard */; };
 		D46733322522067B005363EB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46733312522067B005363EB /* User.swift */; };
-		D467333425220688005363EB /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467333325220688005363EB /* Login.swift */; };
 		D46733362522068F005363EB /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46733352522068F005363EB /* NetworkingService.swift */; };
 		D467333825220699005363EB /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467333725220699005363EB /* AlertService.swift */; };
 		D467333A252206A0005363EB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4673339252206A0005363EB /* LoginViewController.swift */; };
@@ -22,22 +25,25 @@
 		D467333E252206C5005363EB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467333D252206C5005363EB /* MainViewController.swift */; };
 		D46733402522074F005363EB /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467333F2522074F005363EB /* ErrorResponse.swift */; };
 		D467334225220F45005363EB /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467334125220F45005363EB /* FormTextField.swift */; };
-		D4673371252DB99E005363EB /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4673370252DB99D005363EB /* TabViewController.swift */; };
 		D4673373252DCC91005363EB /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4673372252DCC90005363EB /* MyPageViewController.swift */; };
 		D4673376252DDFE1005363EB /* LectureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4673375252DDFE1005363EB /* LectureCell.swift */; };
+		D4A61421254990DF00E3657C /* RoomEnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A61420254990DF00E3657C /* RoomEnterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D4296F2925484E6D00FDF4B1 /* RoomEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEditViewController.swift; sourceTree = "<group>"; };
+		D457848C253821D100A5346C /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		D457848E2539912500A5346C /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		D4578490253DCFE300A5346C /* RoomCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreateViewController.swift; sourceTree = "<group>"; };
+		D457849225418FB300A5346C /* AttendanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCell.swift; sourceTree = "<group>"; };
 		D467331A2522064B005363EB /* IK IK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IK IK.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D467331D2522064B005363EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D467331F2522064B005363EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D46733212522064B005363EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D46733242522064B005363EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D467332625220653005363EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D467332925220653005363EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D467332B25220653005363EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46733312522067B005363EB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		D467333325220688005363EB /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		D46733352522068F005363EB /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		D467333725220699005363EB /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		D4673339252206A0005363EB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -45,9 +51,9 @@
 		D467333D252206C5005363EB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D467333F2522074F005363EB /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		D467334125220F45005363EB /* FormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
-		D4673370252DB99D005363EB /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		D4673372252DCC90005363EB /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		D4673375252DDFE1005363EB /* LectureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCell.swift; sourceTree = "<group>"; };
+		D4A61420254990DF00E3657C /* RoomEnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEnterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +88,6 @@
 			children = (
 				D467331D2522064B005363EB /* AppDelegate.swift */,
 				D467331F2522064B005363EB /* SceneDelegate.swift */,
-				D46733212522064B005363EB /* ViewController.swift */,
 				D46733232522064B005363EB /* Main.storyboard */,
 				D4673374252DCCC2005363EB /* Controller */,
 				D467334125220F45005363EB /* FormTextField.swift */,
@@ -90,7 +95,7 @@
 				D467332825220653005363EB /* LaunchScreen.storyboard */,
 				D467332B25220653005363EB /* Info.plist */,
 				D46733312522067B005363EB /* User.swift */,
-				D467333325220688005363EB /* Login.swift */,
+				D457848C253821D100A5346C /* Room.swift */,
 				D46733352522068F005363EB /* NetworkingService.swift */,
 				D467333F2522074F005363EB /* ErrorResponse.swift */,
 				D467333725220699005363EB /* AlertService.swift */,
@@ -101,12 +106,16 @@
 		D4673374252DCCC2005363EB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D4673372252DCC90005363EB /* MyPageViewController.swift */,
 				D4673339252206A0005363EB /* LoginViewController.swift */,
-				D4673370252DB99D005363EB /* TabViewController.swift */,
 				D467333B252206BA005363EB /* SignUpViewController.swift */,
 				D4673375252DDFE1005363EB /* LectureCell.swift */,
+				D457849225418FB300A5346C /* AttendanceCell.swift */,
 				D467333D252206C5005363EB /* MainViewController.swift */,
+				D457848E2539912500A5346C /* RecordViewController.swift */,
+				D4578490253DCFE300A5346C /* RoomCreateViewController.swift */,
+				D4296F2925484E6D00FDF4B1 /* RoomEditViewController.swift */,
+				D4A61420254990DF00E3657C /* RoomEnterViewController.swift */,
+				D4673372252DCC90005363EB /* MyPageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -182,18 +191,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D457849325418FB300A5346C /* AttendanceCell.swift in Sources */,
 				D46733322522067B005363EB /* User.swift in Sources */,
-				D467333425220688005363EB /* Login.swift in Sources */,
+				D457848D253821D100A5346C /* Room.swift in Sources */,
 				D467333825220699005363EB /* AlertService.swift in Sources */,
-				D46733222522064B005363EB /* ViewController.swift in Sources */,
-				D4673371252DB99E005363EB /* TabViewController.swift in Sources */,
+				D457848F2539912500A5346C /* RecordViewController.swift in Sources */,
 				D467333A252206A0005363EB /* LoginViewController.swift in Sources */,
+				D4296F2A25484E6D00FDF4B1 /* RoomEditViewController.swift in Sources */,
 				D46733362522068F005363EB /* NetworkingService.swift in Sources */,
 				D467333C252206BA005363EB /* SignUpViewController.swift in Sources */,
 				D467334225220F45005363EB /* FormTextField.swift in Sources */,
 				D4673376252DDFE1005363EB /* LectureCell.swift in Sources */,
+				D4578491253DCFE300A5346C /* RoomCreateViewController.swift in Sources */,
 				D4673373252DCC91005363EB /* MyPageViewController.swift in Sources */,
 				D467331E2522064B005363EB /* AppDelegate.swift in Sources */,
+				D4A61421254990DF00E3657C /* RoomEnterViewController.swift in Sources */,
 				D46733402522074F005363EB /* ErrorResponse.swift in Sources */,
 				D46733202522064B005363EB /* SceneDelegate.swift in Sources */,
 				D467333E252206C5005363EB /* MainViewController.swift in Sources */,
