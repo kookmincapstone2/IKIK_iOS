@@ -8,17 +8,25 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var pwTextField: UITextField!
-    
     
     let alertService = AlertService()
     let networkingService = NetworkingService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        autoLogin()
+    }
+    
+    func autoLogin() {
+        if let email = UserDefaults.standard.string(forKey: "email") {
+            if let pw = UserDefaults.standard.string(forKey: "pw") { //로그인 통신 함수
+                formDataRequest(email: email, pw: pw)
+            }
+        }
     }
     
     @IBAction func didTapLoginButton(_ sender: Any) {
@@ -29,12 +37,25 @@ class LoginViewController: UIViewController {
             else { return }
         
         formDataRequest(email: email, pw: pw)
-        //        jsonRequest(email: email, pw: pw)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            pwTextField.becomeFirstResponder()
+        } else {
+            pwTextField.resignFirstResponder()
+        }
+        return true
     }
     
     func formDataRequest(email: String, pw: String) {
         let parameters = ["email": email,
                           "pw": pw]
+        
         networkingService.request(endpoint: "/authorization/login", parameters: parameters) { [weak self] (result) in
             
             print(result)
@@ -42,18 +63,18 @@ class LoginViewController: UIViewController {
                 
             case .success(let user):
                 //                self?.performSegue(withIdentifier: "loginSegue", sender: user)
-//                let mainScreen = self?.storyboard!.instantiateViewController(withIdentifier: "MainScreen") as? TabViewController
-//                self?.navigationController?.pushViewController(mainScreen!, animated: true)
-//                mainScreen!.user = user
+                //                let mainScreen = self?.storyboard!.instantiateViewController(withIdentifier: "MainScreen") as? TabViewController
+                //                self?.navigationController?.pushViewController(mainScreen!, animated: true)
+                //                mainScreen!.user = user
+                UserDefaults.standard.set(email, forKey: "email")
+                UserDefaults.standard.set(pw, forKey: "pw")
+                UserDefaults.standard.set((user!).name, forKey: "username")
+                UserDefaults.standard.set((user!).userId, forKey: "userid")
+                UserDefaults.standard.set((user!).rank, forKey: "rank")
                 
-                // after login is done, maybe put this in the login web service completion block
-
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
-                UserDefaults.standard.set((user as! User).name, forKey: "username")
                 
-                // This is to get the SceneDelegate object from your view controller
-                // then call the change root view controller function to change to main tab bar
                 (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
                 
             case .failure(let error):
@@ -63,24 +84,6 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
-//    func jsonRequest(email: String, pw: String) {
-//
-//        let login = Login(email: email, pw: pw)
-//
-//        networkingService.request(endpoint: "/authorization/login", loginObject: login) { [weak self] (result) in
-//
-//            switch result {
-//
-//            case .success(let user): self?.performSegue(withIdentifier: "loginSegue", sender: user)
-//
-//            case .failure(let error):
-//
-//                guard let alert = self?.alertService.alert(message: error.localizedDescription) else { return }
-//                self?.present(alert, animated: true)
-//            }
-//        }
-//    }
     
     //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     //
