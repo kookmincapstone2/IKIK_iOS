@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D4296F2A25484E6D00FDF4B1 /* RoomEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4296F2925484E6D00FDF4B1 /* RoomEditViewController.swift */; };
 		D457848D253821D100A5346C /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457848C253821D100A5346C /* Room.swift */; };
-		D457848F2539912500A5346C /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457848E2539912500A5346C /* RecordViewController.swift */; };
+		D457848F2539912500A5346C /* AttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457848E2539912500A5346C /* AttendanceViewController.swift */; };
 		D4578491253DCFE300A5346C /* RoomCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4578490253DCFE300A5346C /* RoomCreateViewController.swift */; };
 		D457849325418FB300A5346C /* AttendanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457849225418FB300A5346C /* AttendanceCell.swift */; };
 		D467331E2522064B005363EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467331D2522064B005363EB /* AppDelegate.swift */; };
@@ -28,12 +28,14 @@
 		D4673373252DCC91005363EB /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4673372252DCC90005363EB /* MyPageViewController.swift */; };
 		D4673376252DDFE1005363EB /* LectureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4673375252DDFE1005363EB /* LectureCell.swift */; };
 		D4A61421254990DF00E3657C /* RoomEnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A61420254990DF00E3657C /* RoomEnterViewController.swift */; };
+		D4BEF55725516F580061041D /* StudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BEF55625516F580061041D /* StudentsViewController.swift */; };
+		D4BEF55B255170C30061041D /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BEF55A255170C30061041D /* StudentCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D4296F2925484E6D00FDF4B1 /* RoomEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEditViewController.swift; sourceTree = "<group>"; };
 		D457848C253821D100A5346C /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
-		D457848E2539912500A5346C /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		D457848E2539912500A5346C /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
 		D4578490253DCFE300A5346C /* RoomCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreateViewController.swift; sourceTree = "<group>"; };
 		D457849225418FB300A5346C /* AttendanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCell.swift; sourceTree = "<group>"; };
 		D467331A2522064B005363EB /* IK IK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IK IK.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +56,8 @@
 		D4673372252DCC90005363EB /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		D4673375252DDFE1005363EB /* LectureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCell.swift; sourceTree = "<group>"; };
 		D4A61420254990DF00E3657C /* RoomEnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEnterViewController.swift; sourceTree = "<group>"; };
+		D4BEF55625516F580061041D /* StudentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsViewController.swift; sourceTree = "<group>"; };
+		D4BEF55A255170C30061041D /* StudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,16 +112,26 @@
 			children = (
 				D4673339252206A0005363EB /* LoginViewController.swift */,
 				D467333B252206BA005363EB /* SignUpViewController.swift */,
-				D4673375252DDFE1005363EB /* LectureCell.swift */,
-				D457849225418FB300A5346C /* AttendanceCell.swift */,
 				D467333D252206C5005363EB /* MainViewController.swift */,
-				D457848E2539912500A5346C /* RecordViewController.swift */,
+				D4BEF55625516F580061041D /* StudentsViewController.swift */,
+				D457848E2539912500A5346C /* AttendanceViewController.swift */,
+				D4BEF55C255171DF0061041D /* TableViewCell */,
 				D4578490253DCFE300A5346C /* RoomCreateViewController.swift */,
 				D4296F2925484E6D00FDF4B1 /* RoomEditViewController.swift */,
 				D4A61420254990DF00E3657C /* RoomEnterViewController.swift */,
 				D4673372252DCC90005363EB /* MyPageViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		D4BEF55C255171DF0061041D /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D4673375252DDFE1005363EB /* LectureCell.swift */,
+				D4BEF55A255170C30061041D /* StudentCell.swift */,
+				D457849225418FB300A5346C /* AttendanceCell.swift */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,7 +209,7 @@
 				D46733322522067B005363EB /* User.swift in Sources */,
 				D457848D253821D100A5346C /* Room.swift in Sources */,
 				D467333825220699005363EB /* AlertService.swift in Sources */,
-				D457848F2539912500A5346C /* RecordViewController.swift in Sources */,
+				D457848F2539912500A5346C /* AttendanceViewController.swift in Sources */,
 				D467333A252206A0005363EB /* LoginViewController.swift in Sources */,
 				D4296F2A25484E6D00FDF4B1 /* RoomEditViewController.swift in Sources */,
 				D46733362522068F005363EB /* NetworkingService.swift in Sources */,
@@ -205,6 +219,8 @@
 				D4578491253DCFE300A5346C /* RoomCreateViewController.swift in Sources */,
 				D4673373252DCC91005363EB /* MyPageViewController.swift in Sources */,
 				D467331E2522064B005363EB /* AppDelegate.swift in Sources */,
+				D4BEF55725516F580061041D /* StudentsViewController.swift in Sources */,
+				D4BEF55B255170C30061041D /* StudentCell.swift in Sources */,
 				D4A61421254990DF00E3657C /* RoomEnterViewController.swift in Sources */,
 				D46733402522074F005363EB /* ErrorResponse.swift in Sources */,
 				D46733202522064B005363EB /* SceneDelegate.swift in Sources */,

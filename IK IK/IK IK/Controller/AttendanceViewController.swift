@@ -1,5 +1,5 @@
 //
-//  RecordViewController.swift
+//  AttendanceViewController.swift
 //  IK IK
 //
 //  Created by 서민주 on 2020/10/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecordViewController: UIViewController, UITableViewDataSource {
+class AttendanceViewController: UIViewController, UITableViewDataSource {
     
     var roomData: Room?
     var dates: [String] = ["9/2 (수)", "9/9 (수)", "9/16 (수)"]

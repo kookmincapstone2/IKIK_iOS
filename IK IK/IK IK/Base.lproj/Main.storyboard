@@ -260,10 +260,10 @@
             </objects>
             <point key="canvasLocation" x="1021.6" y="801.72413793103453"/>
         </scene>
-        <!--View Controller-->
+        <!--Students View Controller-->
         <scene sceneID="TJg-r7-Jhf">
             <objects>
-                <viewController id="WyW-LL-1ST" sceneMemberID="viewController">
+                <viewController id="WyW-LL-1ST" customClass="StudentsViewController" customModule="IK_IK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yzg-me-jah">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -273,7 +273,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="79" id="ftJ-8d-iFk">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="79" id="ftJ-8d-iFk" customClass="StudentCell" customModule="IK_IK" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ftJ-8d-iFk" id="Dwd-in-beN">
@@ -303,6 +303,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="attendancePercentageLabel" destination="NdL-J5-4xB" id="K7i-H4-xkP"/>
+                                            <outlet property="studentIdLabel" destination="k4N-yS-63c" id="3Bg-ZU-8oY"/>
+                                            <outlet property="studentNameLabel" destination="7A8-Kc-GZd" id="fHy-VL-f43"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -324,11 +329,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Tnl-sB-kEw"/>
                     </view>
-                    <navigationItem key="navigationItem" id="AEd-4h-OFd"/>
+                    <navigationItem key="navigationItem" id="AEd-4h-OFd">
+                        <barButtonItem key="rightBarButtonItem" title="편집" id="L9z-mZ-aQ4"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="78g-UQ-tCP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4992.8000000000002" y="-582.26600985221683"/>
+            <point key="canvasLocation" x="4271" y="-582"/>
         </scene>
         <!--Room Create View Controller-->
         <scene sceneID="rLd-DD-CpE">
@@ -697,10 +705,10 @@
             </objects>
             <point key="canvasLocation" x="3437.5999999999999" y="-582.26600985221683"/>
         </scene>
-        <!--Record View Controller-->
+        <!--Attendance View Controller-->
         <scene sceneID="6pt-Ib-Bpc">
             <objects>
-                <viewController id="Ayf-KX-p7o" customClass="RecordViewController" customModule="IK_IK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ayf-KX-p7o" customClass="AttendanceViewController" customModule="IK_IK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K56-B1-PpL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -792,7 +800,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q9i-AV-fej" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4269.6000000000004" y="-582.26600985221683"/>
+            <point key="canvasLocation" x="4993" y="-582"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="LFJ-QT-IIc">
