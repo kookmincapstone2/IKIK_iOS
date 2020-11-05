@@ -15,7 +15,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var pwTextField: UITextField!
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var rankControl: UISegmentedControl!
     
+    var myRank = "student"
     let alertService = AlertService()
     let networkingService = NetworkingService()
     
@@ -69,37 +71,49 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    @IBAction func rankChanged(_ sender: Any) {
+        switch rankControl.selectedSegmentIndex
+        {
+        case 0:
+            myRank = "teacher"
+        case 1:
+            myRank = "student"
+        default:
+            break
+        }
+    }
+    
+    // MARK: - signup networking
     @IBAction func didTapSignUpButton(_ sender: Any) {
         
         guard
             let name = nameTextField.text,
             let email = emailTextField.text,
             let pw = pwTextField.text,
-            let student_id = idTextField.text,
+            let studentId = idTextField.text,
             let phone = phoneTextField.text
             else { return }
         
-        formDataRequest(name: name, email: email, pw: pw, student_id: student_id, phone: phone)
+        formDataRequest(name: name, email: email, pw: pw, studentId: studentId, phone: phone, rank: myRank)
     }
     
-    func formDataRequest(name: String, email: String, pw: String, student_id: String, phone: String) {
-       
+    func formDataRequest(name: String, email: String, pw: String, studentId: String, phone: String, rank: String) {
+        
         let parameters = ["email": email,
                           "pw": pw,
                           "name": name,
-                          "student_id": student_id,
-                          "phone": phone]
-        print(parameters)
+                          "student_id": studentId,
+                          "phone": phone,
+                          "rank": rank]
+        
         networkingService.request(endpoint: "/authorization/signup", parameters: parameters) { [weak self] (result) in
             print(result)
             switch result {
                 
             case .success:
-//                guard let alert = self?.alertService.alert(message: "\(user.name)님 회원가입 성공") else { return }
-//                self?.present(alert, animated: true)
                 self?.dismiss(animated: true, completion: nil)
                 break
-            
+                
             case .failure(let error):
                 // alert to fill all parameter
                 guard let alert = self?.alertService.alert(message: error.localizedDescription) else { return }
