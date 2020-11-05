@@ -8,9 +8,8 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    //    var user: User?
     var myRoomList = [Room]()
     var selectedRoom: Room?
     let networkingService = NetworkingService()
@@ -39,7 +38,10 @@ class MainViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func getNewRoomData(_ sender: UIStoryboardSegue){
         if let from = sender.source as? RoomCreateViewController {
-            print(from)
+            print(from.newRoom ?? "no room data")
+            myRoomList.append(from.newRoom!)
+            mainTableView.reloadData()
+        } else if let from = sender.source as? RoomEnterViewController {
             print(from.newRoom ?? "no room data")
             myRoomList.append(from.newRoom!)
             mainTableView.reloadData()
@@ -83,7 +85,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        print("did select row at")
         selectedRoom = myRoomList[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
         if let rank = UserDefaults.standard.string(forKey: "rank") {
@@ -105,11 +107,11 @@ class MainViewController: UIViewController, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("prepare")
         if segue.identifier == "teacherView" {
-            let destination = segue.destination as! RecordViewController
+            let destination = segue.destination as! StudentsViewController
             destination.roomData = selectedRoom
             
         } else if segue.identifier == "studentView" {
-            let destination = segue.destination as! RecordViewController
+            let destination = segue.destination as! AttendanceViewController
             destination.roomData = selectedRoom
         }
     }

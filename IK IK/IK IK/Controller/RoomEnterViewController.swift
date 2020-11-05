@@ -51,7 +51,7 @@ class RoomEnterViewController: UIViewController {
             switch result {
                 
             case .success(let room):
-//                self?.newRoom = room!
+                self?.newRoom = room!
                 self?.performSegue(withIdentifier: "unwindToMainVC", sender: self)
                 
             case .failure(let error):
