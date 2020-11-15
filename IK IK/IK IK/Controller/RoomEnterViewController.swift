@@ -44,13 +44,13 @@ class RoomEnterViewController: UIViewController {
     func roomEnteringRequest(userId: String, code: String) {
         let parameters = ["user_id": userId, "invite_code": code]
         
-        networkingService.handleRoom(method: "POST", endpoint: "/room/member/management", parameters: parameters, completion: { [weak self] (result) in
+        networkingService.request(endpoint: "/room/member/management", method: "POST", parameters: parameters, completion: { [weak self] (result) in
             
             print(result)
             switch result {
                 
             case .success(let room):
-                self?.newRoom = room!
+                self?.newRoom = room as? Room
                 self?.performSegue(withIdentifier: "unwindToMainVC", sender: self)
                 
             case .failure(let error):

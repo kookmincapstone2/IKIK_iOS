@@ -111,7 +111,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                           "phone": phone,
                           "rank": rank]
         
-        networkingService.request(endpoint: "/authorization/signup", parameters: parameters) { [weak self] (result) in
+        networkingService.request(endpoint: "/authorization/signup", method: "POST", parameters: parameters) { [weak self] (result) in
             print(result)
             switch result {
                 

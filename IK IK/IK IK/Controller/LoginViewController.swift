@@ -56,7 +56,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let parameters = ["email": email,
                           "pw": pw]
         
-        networkingService.request(endpoint: "/authorization/login", parameters: parameters) { [weak self] (result) in
+        networkingService.request(endpoint: "/authorization/login", method: "POST", parameters: parameters) { [weak self] (result) in
             
             print(result)
             switch result {
@@ -65,9 +65,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 UserDefaults.standard.set(email, forKey: "email")
                 UserDefaults.standard.set(pw, forKey: "pw")
-                UserDefaults.standard.set((user!).name, forKey: "username")
-                UserDefaults.standard.set((user!).userId, forKey: "userid")
-                UserDefaults.standard.set((user!).rank, forKey: "rank")
+                UserDefaults.standard.set((user as? User)?.name, forKey: "username")
+                UserDefaults.standard.set((user as? User)?.userId, forKey: "userid")
+                UserDefaults.standard.set((user as? User)?.rank, forKey: "rank")
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")

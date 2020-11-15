@@ -52,13 +52,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func getMyRooms(userId: Int) {
-        networkingService.getMyRooms(endpoint: "/room/member/management", userId: userId, completion: { [weak self] (result) in
+        let parameters = ["user_id": userId]
+        networkingService.request(endpoint: "/room/member/management", parameters: parameters, completion: { [weak self] (result) in
             
             print(result)
             switch result {
                 
             case .success(let roomList):
-                self?.myRoomList = roomList.sorted(by: { $0.title < $1.title})
+                self?.myRoomList = (roomList as? [Room])!.sorted(by: { $0.title < $1.title})
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadRoomData"), object: nil)
                 
             case .failure(let error):

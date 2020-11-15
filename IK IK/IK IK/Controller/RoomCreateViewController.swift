@@ -46,15 +46,13 @@ class RoomCreateViewController: UIViewController {
     func roomCreationRequest(userId: String, title: String, population: String) {
         let parameters = ["user_id": userId, "title": title, "maximum_population": population]
         
-        networkingService.handleRoom(method: "POST", endpoint: "/room/management", parameters: parameters, completion: { [weak self] (result) in
+        networkingService.request(endpoint: "/room/management", method: "POST", parameters: parameters, completion: { [weak self] (result) in
             
             print(result)
             switch result {
                 
             case .success(let room):
-                //                invitation code sharing modal, using clipboard
-                //                UIPasteboard.general.string
-                self?.newRoom = room!
+                self?.newRoom = room as? Room
                 self?.performSegue(withIdentifier: "unwindToMainVC", sender: self)
                 
             case .failure(let error):
