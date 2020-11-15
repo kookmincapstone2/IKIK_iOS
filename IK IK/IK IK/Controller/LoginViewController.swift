@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func autoLogin() {
         if let email = UserDefaults.standard.string(forKey: "email") {
-            if let pw = UserDefaults.standard.string(forKey: "pw") { //로그인 통신 함수
+            if let pw = UserDefaults.standard.string(forKey: "pw") {
                 formDataRequest(email: email, pw: pw)
             }
         }
@@ -62,10 +62,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             switch result {
                 
             case .success(let user):
-                //                self?.performSegue(withIdentifier: "loginSegue", sender: user)
-                //                let mainScreen = self?.storyboard!.instantiateViewController(withIdentifier: "MainScreen") as? TabViewController
-                //                self?.navigationController?.pushViewController(mainScreen!, animated: true)
-                //                mainScreen!.user = user
+                
                 UserDefaults.standard.set(email, forKey: "email")
                 UserDefaults.standard.set(pw, forKey: "pw")
                 UserDefaults.standard.set((user!).name, forKey: "username")
@@ -85,11 +82,4 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //
-    //        if let mainAppVC = segue.destination as? MainViewController, let user = sender as? User {
-    //
-    //            mainAppVC.user = user
-    //        }
-    //    }
 }

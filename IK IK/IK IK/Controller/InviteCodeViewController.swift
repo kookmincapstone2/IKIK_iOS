@@ -11,6 +11,7 @@ import UIKit
 class InviteCodeViewController: UIViewController {
 
     var code: String?
+    
     let alertService = AlertService()
     
     @IBOutlet weak var codeTextField: UITextField!
@@ -22,8 +23,8 @@ class InviteCodeViewController: UIViewController {
     
     @IBAction func didTapCopyButton(_ sender: Any) {
         UIPasteboard.general.string = code
+        
         let alert = alertService.alert(message: "복사 완료!")
         self.present(alert, animated: true)
     }
-    
 }

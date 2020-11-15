@@ -10,11 +10,11 @@ import UIKit
 
 class RoomCreateViewController: UIViewController {
     
+    var newRoom: Room?
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var populationTextField: UITextField!
     
-    var newRoom: Room?
     let networkingService = NetworkingService()
     
     override func viewDidLoad() {

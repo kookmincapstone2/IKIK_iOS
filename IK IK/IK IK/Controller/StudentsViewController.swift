@@ -26,24 +26,24 @@ class StudentsViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AttendanceCell", for: indexPath) as! AttendanceCell
         
-//        let date = dates[indexPath.row]
-//        let image = images[indexPath.row]
-//
-//        cell.dateLabel.text = date
-//        
-//        switch image {
-//
-//        case "xmark.circle":
-//            cell.attendanceImageView.image = UIImage(systemName: "xmark.circle")
-//            cell.attendanceImageView.tintColor = UIColor.systemRed
-//
-//        case "ellipsis.circle":
-//            cell.attendanceImageView.image = UIImage(systemName: "ellipsis.circle")
-//            cell.attendanceImageView.tintColor = UIColor.systemGray4
-//
-//        default:
-//            cell.attendanceImageView.image = UIImage(systemName: "checkmark.circle")
-//        }
+        //        let date = dates[indexPath.row]
+        //        let image = images[indexPath.row]
+        //
+        //        cell.dateLabel.text = date
+        //
+        //        switch image {
+        //
+        //        case "xmark.circle":
+        //            cell.attendanceImageView.image = UIImage(systemName: "xmark.circle")
+        //            cell.attendanceImageView.tintColor = UIColor.systemRed
+        //
+        //        case "ellipsis.circle":
+        //            cell.attendanceImageView.image = UIImage(systemName: "ellipsis.circle")
+        //            cell.attendanceImageView.tintColor = UIColor.systemGray4
+        //
+        //        default:
+        //            cell.attendanceImageView.image = UIImage(systemName: "checkmark.circle")
+        //        }
         
         return cell
     }

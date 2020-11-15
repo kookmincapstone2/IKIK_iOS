@@ -10,15 +10,14 @@ import UIKit
 
 class RoomEnterViewController: UIViewController {
     
+    var newRoom: Room?
+    
     @IBOutlet weak var invitationCodeTextField: FormTextField!
     
-    var newRoom: Room?
     let networkingService = NetworkingService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     
     // MARK: - IBActions

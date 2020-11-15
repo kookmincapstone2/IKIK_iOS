@@ -196,9 +196,7 @@ class NetworkingService {
     func makePostRequest(url: URL, method: String, parameters: [String: Any]) -> URLRequest {
         
         var request = URLRequest(url: url)
-        
         var components = URLComponents()
-        
         var queryItems = [URLQueryItem]()
         
         for (key, value) in parameters {

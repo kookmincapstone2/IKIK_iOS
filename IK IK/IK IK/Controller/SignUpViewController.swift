@@ -18,6 +18,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var rankControl: UISegmentedControl!
     
     var myRank = "student"
+    
     let alertService = AlertService()
     let networkingService = NetworkingService()
     
@@ -35,11 +36,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         //        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        //        if self.view.frame.origin.y == 0 {
+        //                self.view.frame.origin.y -= keyboardSize.height
+        //            self.view.frame.origin.y -= 100
+        //        }
+        //        }
+        
         if self.view.frame.origin.y == 0 {
-            //                self.view.frame.origin.y -= keyboardSize.height
             self.view.frame.origin.y -= 100
         }
-        //        }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {

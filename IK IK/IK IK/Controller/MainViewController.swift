@@ -12,16 +12,19 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var myRoomList = [Room]()
     var selectedRoom: Room?
-    let networkingService = NetworkingService()
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
     
+    let networkingService = NetworkingService()
     
     // MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "reloadRoomData"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reload),
+                                               name: NSNotification.Name(rawValue: "reloadRoomData"),
+                                               object: nil)
         
         if let name = UserDefaults.standard.string(forKey: "username"),
             let userId = UserDefaults.standard.string(forKey: "userid") {
@@ -38,14 +41,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func getNewRoomData(_ sender: UIStoryboardSegue){
         if let from = sender.source as? RoomCreateViewController {
-            print(from.newRoom ?? "no room data")
             myRoomList.append(from.newRoom!)
-            mainTableView.reloadData()
+            
         } else if let from = sender.source as? RoomEnterViewController {
-            print(from.newRoom ?? "no room data")
             myRoomList.append(from.newRoom!)
             mainTableView.reloadData()
         }
+        
+        mainTableView.reloadData()
     }
     
     func getMyRooms(userId: Int) {
@@ -59,9 +62,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadRoomData"), object: nil)
                 
             case .failure(let error):
-                // did not enter any room yet
                 self?.myRoomList = []
-                print("getting room error", error)
+                print("getting room error", error) // did not enter any room yet
                 break
             }
         })
@@ -80,10 +82,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.titleLabel.text = roomTemp.title
         cell.timeLabel.text = "최대 정원: "+String(roomTemp.maximumPopulation)
         cell.detailLabel.text = "초대 코드: " + (roomTemp.inviteCode ?? "")
-
+        
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("did select row at")
         selectedRoom = myRoomList[indexPath.row]
@@ -117,10 +119,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-//     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            myRoomList.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        }
-//    }
+    //     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    //        if editingStyle == .delete {
+    //            myRoomList.remove(at: indexPath.row)
+    //            tableView.deleteRows(at: [indexPath], with: .fade)
+    //        }
+    //    }
 }
