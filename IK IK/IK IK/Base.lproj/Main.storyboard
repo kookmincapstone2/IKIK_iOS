@@ -359,13 +359,21 @@
                         <viewLayoutGuide key="safeArea" id="Tnl-sB-kEw"/>
                     </view>
                     <navigationItem key="navigationItem" id="AEd-4h-OFd">
-                        <barButtonItem key="rightBarButtonItem" title="편집" id="L9z-mZ-aQ4"/>
+                        <barButtonItem key="rightBarButtonItem" title="편집" id="L9z-mZ-aQ4">
+                            <connections>
+                                <segue destination="yeH-WF-yOs" kind="presentation" identifier="editView" id="LjK-ze-N8X"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="detailLabel" destination="Rcr-Tx-5Q1" id="H3P-Z0-8WX"/>
+                        <outlet property="titleLabel" destination="MZN-dg-n8Z" id="p5J-mH-KBR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="78g-UQ-tCP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4271" y="-582"/>
+            <point key="canvasLocation" x="4269.6000000000004" y="-582.26600985221683"/>
         </scene>
         <!--Invite Code View Controller-->
         <scene sceneID="41X-54-k9z">
@@ -594,6 +602,22 @@
                                             <action selector="didTapCancelButton:" destination="yeH-WF-yOs" eventType="touchUpInside" id="D38-yI-a7A"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZI-ff-7wf">
+                                        <rect key="frame" x="42" y="295" width="184" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="수업 탈퇴">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didTapLeaveButton:" destination="yeH-WF-yOs" eventType="touchUpInside" id="umi-fh-lQx"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -602,11 +626,15 @@
                         <viewLayoutGuide key="safeArea" id="UHa-gg-FKY"/>
                     </view>
                     <connections>
+                        <outlet property="deleteButton" destination="TNV-8J-6lQ" id="CR1-jG-Suc"/>
+                        <outlet property="leaveButton" destination="dZI-ff-7wf" id="NsK-cs-FBd"/>
                         <outlet property="populationTextField" destination="nEN-T1-K77" id="rnq-3y-5io"/>
                         <outlet property="titleTextField" destination="LUm-rI-Qow" id="fgR-Qc-BAC"/>
+                        <segue destination="gTC-re-ZAC" kind="unwind" identifier="unwindToMainVC" unwindAction="getNewRoomData:" id="ykG-ZU-wLt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jzx-KZ-zXi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="gTC-re-ZAC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4993" y="115"/>
         </scene>
@@ -742,7 +770,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gq2-XM-H3G">
-                                <rect key="frame" x="283" y="100" width="76" height="30"/>
+                                <rect key="frame" x="269" y="100" width="90" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.43847179409999998" green="0.74077039960000002" blue="0.75686961409999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="수업 생성">
@@ -754,11 +782,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="nfo-Sn-U4D" kind="presentation" id="Cyr-Nm-5bb"/>
+                                    <segue destination="nfo-Sn-U4D" kind="presentation" id="S4u-OV-PdH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyM-lY-MNP">
-                                <rect key="frame" x="199" y="99" width="76" height="30"/>
+                                <rect key="frame" x="269" y="100" width="90" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.43847179409999998" green="0.74077039960000002" blue="0.75686961409999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="수업 참여">
@@ -787,6 +815,8 @@
                     <navigationItem key="navigationItem" id="eZ9-R6-OFR"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="createButton" destination="gq2-XM-H3G" id="DT4-JT-5wt"/>
+                        <outlet property="enterButton" destination="NyM-lY-MNP" id="AfY-x9-VVa"/>
                         <outlet property="mainTableView" destination="bTM-Gu-X4o" id="U3K-9n-bbs"/>
                         <outlet property="nameLabel" destination="KDz-Uc-imw" id="NAr-Su-gLQ"/>
                         <segue destination="Ayf-KX-p7o" kind="show" identifier="studentView" id="a6D-cf-xp5"/>
@@ -884,7 +914,7 @@
                     <navigationItem key="navigationItem" id="QfU-PC-uxO">
                         <barButtonItem key="rightBarButtonItem" title="편집" id="oVM-6e-15b">
                             <connections>
-                                <segue destination="yeH-WF-yOs" kind="presentation" id="ldg-VS-AfY"/>
+                                <segue destination="yeH-WF-yOs" kind="presentation" identifier="editView" id="yjs-kN-7dv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1147,6 +1177,9 @@
             <point key="canvasLocation" x="2616.8000000000002" y="801.72413793103453"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="yjs-kN-7dv"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="alarm" catalog="system" width="124" height="128"/>
         <image name="arrow.down" catalog="system" width="120" height="128"/>
