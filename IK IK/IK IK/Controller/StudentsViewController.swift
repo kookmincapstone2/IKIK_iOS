@@ -62,6 +62,10 @@ class StudentsViewController: UIViewController, UITableViewDataSource {
         if segue.identifier == "codeView" {
             let destination = segue.destination as! InviteCodeViewController
             destination.code = roomData?.inviteCode
+            
+        } else if segue.identifier == "editView" {
+            let destination = segue.destination as! RoomEditViewController
+            destination.roomData = roomData
         }
     }
 }
