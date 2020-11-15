@@ -15,6 +15,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var enterButton: UIButton!
     
     let networkingService = NetworkingService()
     
@@ -32,20 +34,39 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             nameLabel.text = "안녕하세요, \(name.capitalized)님"
             getMyRooms(userId: Int(userId)!)
         }
-        refresh()
+        
+        if let rank = UserDefaults.standard.string(forKey: "rank") {
+            if rank == "teacher" { enterButton.isHidden = true }
+            else { createButton.isHidden = true }
+        }
+        
     }
     
-    @objc func refresh() {
+    @objc func reload(_ notification: Notification) {
+        print("reload")
+        if let room = notification.userInfo?["room"] as? Room {
+            if let found = myRoomList.firstIndex(where: { $0.roomId == room.roomId }) {
+                myRoomList[found] = room
+            }
+        }
+        
         self.mainTableView.reloadData()
     }
     
+    // MARK: - Networking [get rooms]
     @IBAction func getNewRoomData(_ sender: UIStoryboardSegue){
         if let from = sender.source as? RoomCreateViewController {
             myRoomList.append(from.newRoom!)
             
         } else if let from = sender.source as? RoomEnterViewController {
             myRoomList.append(from.newRoom!)
-            mainTableView.reloadData()
+            
+        } else if let from = sender.source as? RoomEditViewController {
+            print("RoomEditViewController", from)
+            if let found = myRoomList.firstIndex(where: { $0.roomId == from.roomData!.roomId }) {
+                print("deleted")
+                myRoomList.remove(at: found)
+            }
         }
         
         mainTableView.reloadData()
@@ -81,7 +102,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let roomTemp = myRoomList[indexPath.row]
         
         cell.titleLabel.text = roomTemp.title
-        cell.timeLabel.text = "최대 정원: "+String(roomTemp.maximumPopulation)
+        cell.timeLabel.text = "최대 정원: " + String(roomTemp.maximumPopulation) + " 명"
         cell.detailLabel.text = "초대 코드: " + (roomTemp.inviteCode ?? "")
         
         return cell
@@ -106,6 +127,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
     }
+    
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("prepare")
