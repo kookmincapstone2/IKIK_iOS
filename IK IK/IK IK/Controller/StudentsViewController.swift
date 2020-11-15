@@ -58,4 +58,10 @@ class StudentsViewController: UIViewController, UITableViewDataSource {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "codeView" {
+            let destination = segue.destination as! InviteCodeViewController
+            destination.code = roomData?.inviteCode
+        }
+    }
 }

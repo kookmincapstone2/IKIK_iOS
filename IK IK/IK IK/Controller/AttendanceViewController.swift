@@ -10,12 +10,24 @@ import UIKit
 
 class AttendanceViewController: UIViewController, UITableViewDataSource {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var attendanceRateLabel: UILabel!
+    
     var roomData: Room?
     var dates: [String] = ["9/2 (수)", "9/9 (수)", "9/16 (수)"]
     var images: [String?] = ["checkmark.circle", "xmark.circle", "ellipsis.circle"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleLabel.text = roomData?.title
+        detailLabel.text = roomData?.inviteCode
+        // TODO - 출석일수 받아오게
+        let days = 5
+        let total = 30
+        let rate = round(Double(days*10^3) / Double(total) * 10) / 10
+        attendanceRateLabel.text = "출석율 \(days)/\(total) ( \(rate)% )"
     }
     
     // MARK: - tableView

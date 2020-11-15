@@ -14,7 +14,7 @@ class AlertService {
         
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        let action = UIAlertAction(title: "닫기", style: .cancel, handler: nil)
         
         alert.addAction(action)
         

@@ -30,6 +30,7 @@
 		D4A61421254990DF00E3657C /* RoomEnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A61420254990DF00E3657C /* RoomEnterViewController.swift */; };
 		D4BEF55725516F580061041D /* StudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BEF55625516F580061041D /* StudentsViewController.swift */; };
 		D4BEF55B255170C30061041D /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BEF55A255170C30061041D /* StudentCell.swift */; };
+		D4BEF55E255BE21F0061041D /* InviteCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BEF55D255BE21F0061041D /* InviteCodeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		D4A61420254990DF00E3657C /* RoomEnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEnterViewController.swift; sourceTree = "<group>"; };
 		D4BEF55625516F580061041D /* StudentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsViewController.swift; sourceTree = "<group>"; };
 		D4BEF55A255170C30061041D /* StudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCell.swift; sourceTree = "<group>"; };
+		D4BEF55D255BE21F0061041D /* InviteCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCodeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				D467333B252206BA005363EB /* SignUpViewController.swift */,
 				D467333D252206C5005363EB /* MainViewController.swift */,
 				D4BEF55625516F580061041D /* StudentsViewController.swift */,
+				D4BEF55D255BE21F0061041D /* InviteCodeViewController.swift */,
 				D457848E2539912500A5346C /* AttendanceViewController.swift */,
 				D4BEF55C255171DF0061041D /* TableViewCell */,
 				D4578490253DCFE300A5346C /* RoomCreateViewController.swift */,
@@ -222,6 +225,7 @@
 				D4BEF55725516F580061041D /* StudentsViewController.swift in Sources */,
 				D4BEF55B255170C30061041D /* StudentCell.swift in Sources */,
 				D4A61421254990DF00E3657C /* RoomEnterViewController.swift in Sources */,
+				D4BEF55E255BE21F0061041D /* InviteCodeViewController.swift in Sources */,
 				D46733402522074F005363EB /* ErrorResponse.swift in Sources */,
 				D46733202522064B005363EB /* SceneDelegate.swift in Sources */,
 				D467333E252206C5005363EB /* MainViewController.swift in Sources */,
