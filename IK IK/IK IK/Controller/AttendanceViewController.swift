@@ -69,4 +69,11 @@ class AttendanceViewController: UIViewController, UITableViewDataSource {
             // handle delete (by removing the data from your array and updating the tableview)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editView" {
+            let destination = segue.destination as! RoomEditViewController
+            destination.roomData = roomData
+        }
+    }
 }
