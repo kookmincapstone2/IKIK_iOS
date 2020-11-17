@@ -112,16 +112,8 @@
 		D4673374252DCCC2005363EB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D4673339252206A0005363EB /* LoginViewController.swift */,
-				D467333B252206BA005363EB /* SignUpViewController.swift */,
-				D467333D252206C5005363EB /* MainViewController.swift */,
-				D4BEF55625516F580061041D /* StudentsViewController.swift */,
-				D4BEF55D255BE21F0061041D /* InviteCodeViewController.swift */,
-				D457848E2539912500A5346C /* AttendanceViewController.swift */,
-				D4BEF55C255171DF0061041D /* TableViewCell */,
-				D4578490253DCFE300A5346C /* RoomCreateViewController.swift */,
-				D4296F2925484E6D00FDF4B1 /* RoomEditViewController.swift */,
-				D4A61420254990DF00E3657C /* RoomEnterViewController.swift */,
+				D4F7A9CA256190AD00445B36 /* Auth */,
+				D4F7A9CB256190D200445B36 /* Main */,
 				D4673372252DCC90005363EB /* MyPageViewController.swift */,
 			);
 			path = Controller;
@@ -135,6 +127,30 @@
 				D457849225418FB300A5346C /* AttendanceCell.swift */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		D4F7A9CA256190AD00445B36 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D4673339252206A0005363EB /* LoginViewController.swift */,
+				D467333B252206BA005363EB /* SignUpViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		D4F7A9CB256190D200445B36 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D4BEF55C255171DF0061041D /* TableViewCell */,
+				D467333D252206C5005363EB /* MainViewController.swift */,
+				D4BEF55625516F580061041D /* StudentsViewController.swift */,
+				D4BEF55D255BE21F0061041D /* InviteCodeViewController.swift */,
+				D457848E2539912500A5346C /* AttendanceViewController.swift */,
+				D4578490253DCFE300A5346C /* RoomCreateViewController.swift */,
+				D4A61420254990DF00E3657C /* RoomEnterViewController.swift */,
+				D4296F2925484E6D00FDF4B1 /* RoomEditViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
