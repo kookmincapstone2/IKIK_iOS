@@ -16,7 +16,41 @@ class StudentsViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.update),
+                                               name: NSNotification.Name(rawValue: "updateRoomData"),
+                                               object: nil)
+        
+        titleLabel.text = roomData?.title
+        detailLabel.text = "\(names.count) / \(roomData!.maximumPopulation) 명 참여중"
     }
+    
+    func getStudents(userId: Int) {
+        let parameters = ["user_id": userId]
+        networkingService.request(endpoint: "/room/management", parameters: parameters, completion: { [weak self] (result) in
+            
+            print(result)
+            switch result {
+                
+            case .success(let studentList):
+                self?.students = (studentList as? [String])!.sorted(by: <)
+                //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadRoomData"), object: nil)
+                
+            case .failure(let error):
+                self?.students = []
+                print("getting student list error", error) // did not enter any room yet
+                break
+            }
+        })
+    }
+    
+    @objc func update(_ notification: Notification) {
+        if let roomData = notification.userInfo?["room"] as? Room {
+            titleLabel.text = roomData.title
+            detailLabel.text = "\(names.count) / \(roomData.maximumPopulation) 명 참여중"
+        }
+    }
+    
     
     // MARK: - tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
