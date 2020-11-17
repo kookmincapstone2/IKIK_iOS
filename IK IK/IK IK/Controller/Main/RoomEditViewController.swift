@@ -9,7 +9,7 @@
 import UIKit
 
 class RoomEditViewController: UIViewController {
-
+    
     var roomData: Room?
     
     @IBOutlet weak var titleTextField: FormTextField!
@@ -82,7 +82,7 @@ class RoomEditViewController: UIViewController {
     func roomEditRequest(userId: String, roomId: String, title: String, population: String) {
         
         let parameters = ["user_id": userId, "room_id": roomId, "title": title, "maximum_population": population]
-
+        
         networkingService.request(endpoint: "/room/management", method: "PUT", parameters: parameters, completion: { [weak self] (result) in
             
             print(result)
@@ -131,7 +131,6 @@ class RoomEditViewController: UIViewController {
             case .success:
                 // TODO: delete alert, pop segue
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadRoomData"), object: nil)
-                self?.performSegue(withIdentifier: "unwindToMainVC", sender: self)
                 
             case .failure(let error):
                 print("deleting room error", error)
