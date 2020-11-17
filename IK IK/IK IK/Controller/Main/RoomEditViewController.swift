@@ -88,7 +88,8 @@ class RoomEditViewController: UIViewController {
             print(result)
             switch result {
             case .success(let room):
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadRoomData"), object: nil, userInfo: ["room": room!])
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateRoomData"),
+                                                object: nil, userInfo: ["room": room!])
                 
             case .failure(let error):
                 // did not enter any room yet
