@@ -10,8 +10,8 @@ import UIKit
 
 class StudentCell: UITableViewCell {
 
-    @IBOutlet weak var studentNameLabel: UILabel!
-    @IBOutlet weak var studentIdLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var attendancePercentageLabel: UILabel!
     
     override func awakeFromNib() {
