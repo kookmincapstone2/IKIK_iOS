@@ -11,8 +11,15 @@ import UIKit
 class StudentsViewController: UIViewController, UITableViewDataSource {
     
     var roomData: Room?
-    var dates: [String] = ["9/2 (수)", "9/9 (수)", "9/16 (수)"]
-    var images: [String?] = ["checkmark.circle", "xmark.circle", "ellipsis.circle"]
+    var students = ["김성수", "김연수", "서민주"]
+    var names = ["Aaren", "Aarika", "Abagael","Abagail","Abbe", "Abbey", "Abbi", "Abbie", "Abby", "Abbye",
+                 "Abigael", "Abigail", "Abigale", "Abra", "Ada", "Adah", "Adaline", "Adan", "Adara", "Adda",
+                 "Addi", "Addia", "Addie", "Addy", "Adel", "Adela", "Adelaida", "Adelaide"]
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    
+    let networkingService = NetworkingService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
