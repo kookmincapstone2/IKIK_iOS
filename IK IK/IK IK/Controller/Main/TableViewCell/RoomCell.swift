@@ -1,5 +1,5 @@
 //
-//  LectureCell.swift
+//  RoomCell.swift
 //  IK IK
 //
 //  Created by 서민주 on 2020/10/07.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LectureCell: UITableViewCell {
+class RoomCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
