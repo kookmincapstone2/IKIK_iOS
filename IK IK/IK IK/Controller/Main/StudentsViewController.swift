@@ -11,13 +11,11 @@ import UIKit
 class StudentsViewController: UIViewController, UITableViewDataSource {
     
     var roomData: Room?
-    var students = ["김성수", "김연수", "서민주"]
-    var names = ["Aaren", "Aarika", "Abagael","Abagail","Abbe", "Abbey", "Abbi", "Abbie", "Abby", "Abbye",
-                 "Abigael", "Abigail", "Abigale", "Abra", "Ada", "Adah", "Adaline", "Adan", "Adara", "Adda",
-                 "Addi", "Addia", "Addie", "Addy", "Adel", "Adela", "Adelaida", "Adelaide"]
+    var students = [String]()
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var studentTableView: UITableView!
     
     let networkingService = NetworkingService()
     
@@ -29,19 +27,20 @@ class StudentsViewController: UIViewController, UITableViewDataSource {
                                                object: nil)
         
         titleLabel.text = roomData?.title
-        detailLabel.text = "\(names.count) / \(roomData!.maximumPopulation) 명 참여중"
+        getStudents(roomId: roomData!.roomId)
     }
     
-    func getStudents(userId: Int) {
-        let parameters = ["user_id": userId]
-        networkingService.request(endpoint: "/room/management", parameters: parameters, completion: { [weak self] (result) in
+    func getStudents(roomId: Int) {
+        let parameters = ["room_id": roomId]
+        networkingService.request(endpoint: "/room/member/all", parameters: parameters, completion: { [weak self] (result) in
             
             print(result)
             switch result {
                 
             case .success(let studentList):
-                self?.students = (studentList as? [String])!.sorted(by: <)
-                //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadRoomData"), object: nil)
+                self?.students = (studentList as! [User])[1...].map({$0.name}).sorted(by: <)
+                self?.detailLabel.text = "\(self!.students.count) / \(self!.roomData!.maximumPopulation) 명 참여중"
+                self?.studentTableView.reloadData()
                 
             case .failure(let error):
                 self?.students = []
@@ -54,14 +53,14 @@ class StudentsViewController: UIViewController, UITableViewDataSource {
     @objc func update(_ notification: Notification) {
         if let roomData = notification.userInfo?["room"] as? Room {
             titleLabel.text = roomData.title
-            detailLabel.text = "\(names.count) / \(roomData.maximumPopulation) 명 참여중"
+            detailLabel.text = "\(students.count) / \(roomData.maximumPopulation) 명 참여중"
         }
     }
     
     
     // MARK: - tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        return students.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,7 +68,7 @@ class StudentsViewController: UIViewController, UITableViewDataSource {
         
         cell.idLabel.text = "2020101\(indexPath.row)"
         
-        let name = names[indexPath.row]
+        let name = students[indexPath.row]
         cell.nameLabel.text = name
         
         return cell
