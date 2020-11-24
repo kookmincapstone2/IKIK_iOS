@@ -17,7 +17,7 @@ class AttendanceViewController: UIViewController, UITableViewDataSource {
     var roomData: Room?
     var dates: [String] = ["2020년 9월 2일 (수)", "2020년 9월 9일 (수)", "2020년 9월 16일 (수)", "2020년 9월 23일 (수)"
                             , "2020년 9월 30일 (수)", "2020년 10월 7일 (수)"]
-    var images: [String?] = ["checkmark.circle", "xmark.circle", "ellipsis.circle", "checkmark.circle", "checkmark.circle"]
+    var images: [String?] = ["checkmark.circle", "xmark.circle", "ellipsis.circle", "checkmark.circle", "checkmark.circle", "checkmark.circle"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
