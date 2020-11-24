@@ -132,6 +132,7 @@ class RoomEditViewController: UIViewController {
             case .success:
                 // TODO: delete alert, pop segue
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadRoomData"), object: nil)
+                self?.performSegue(withIdentifier: "unwindToMainVC", sender: self)
                 
             case .failure(let error):
                 print("deleting room error", error)
