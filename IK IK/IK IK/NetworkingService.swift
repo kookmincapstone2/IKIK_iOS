@@ -185,20 +185,35 @@ class NetworkingService {
                     
                     if let unwrappedData = data {
                         do {
-                            let json = try JSONSerialization.jsonObject(with: unwrappedData, options: .allowFragments)
-                            //                             as! [String: Any]
+                            let json = try JSONSerialization.jsonObject(with: unwrappedData, options: .allowFragments) as! [String: Any]
                             print(json)
                             
+                            print(request)
                             // member-GET(roomList)
-                            var roomList = [Room]()
-                            
-                            for (_, room) in json as! [String: Any] {
-                                print(room.self)
-                                let roomData = try JSONSerialization.data(withJSONObject: room)
-                                roomList.append(try JSONDecoder().decode(Room.self, from: roomData))
+                            if json.keys.contains("0") {
+                                var roomList = [Room]()
+                                
+                                for (_, room) in json {
+                                    print(room.self)
+                                    let roomData = try JSONSerialization.data(withJSONObject: room)
+                                    roomList.append(try JSONDecoder().decode(Room.self, from: roomData))
+                                }
+                                completion(.success(roomList))
+                            } else if json.keys.contains("User") {
+                                var studentList = [User]()
+                                
+                                if let userList = json["User"] {
+                                    print(userList)
+                                    for user in userList as! [Any]  {
+                                        let userData = try JSONSerialization.data(withJSONObject: user)
+                                        studentList.append(try JSONDecoder().decode(User.self, from: userData))
+                                    }
+                                    
+                                }
+                                completion(.success(studentList))
                             }
                             
-                            completion(.success(roomList))
+                            
                             
                             // completion(.success(nil))
                             // } else {
