@@ -88,6 +88,7 @@ class RoomEditViewController: UIViewController {
             print(result)
             switch result {
             case .success(let room):
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadRoomData"), object: nil, userInfo: ["room": room!])
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateRoomData"),
                                                 object: nil, userInfo: ["room": room!])
                 
@@ -110,7 +111,6 @@ class RoomEditViewController: UIViewController {
             switch result {
             case .success:
                 // TODO: delete alert, pop segue
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadRoomData"), object: nil)
                 self?.performSegue(withIdentifier: "unwindToMainVC", sender: self)
                 
             case .failure(let error):
@@ -131,7 +131,6 @@ class RoomEditViewController: UIViewController {
             switch result {
             case .success:
                 // TODO: delete alert, pop segue
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadRoomData"), object: nil)
                 self?.performSegue(withIdentifier: "unwindToMainVC", sender: self)
                 
             case .failure(let error):
