@@ -13,6 +13,7 @@ class AttendanceViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var attendanceRateLabel: UILabel!
+    @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
     
     var roomData: Room?
     var dates: [String] = ["2020년 9월 2일 (수)", "2020년 9월 9일 (수)", "2020년 9월 16일 (수)", "2020년 9월 23일 (수)"
@@ -21,6 +22,12 @@ class AttendanceViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if UserDefaults.standard.string(forKey: "rank") == "student" {
+            self.navigationItem.rightBarButtonItem = self.editBarButtonItem
+        } else {
+            self.navigationItem.rightBarButtonItem = nil
+        }
         
         titleLabel.text = roomData?.title
         detailLabel.text = roomData?.inviteCode
