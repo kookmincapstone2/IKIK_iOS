@@ -665,13 +665,6 @@
                                 <rect key="frame" x="53" y="120" width="269" height="345"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="수업 참가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fM-5a-cDL">
-                                        <rect key="frame" x="102" y="62" width="64" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUi-65-jpb">
                                         <rect key="frame" x="42" y="215" width="184" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -706,12 +699,19 @@
                                             <action selector="didTapCancelButton:" destination="ff9-zS-LP1" eventType="touchUpInside" id="JEh-xQ-UCz"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="참여 코드" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E0R-bq-xjz" customClass="FormTextField" customModule="IK_IK" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="                    참여 코드" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E0R-bq-xjz" customClass="FormTextField" customModule="IK_IK" customModuleProvider="target">
                                         <rect key="frame" x="34" y="134" width="200" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="수업 참가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fM-5a-cDL">
+                                        <rect key="frame" x="102" y="60" width="64" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -937,6 +937,7 @@
                     <connections>
                         <outlet property="attendanceRateLabel" destination="kCW-Mu-Ikf" id="LVe-dJ-vha"/>
                         <outlet property="detailLabel" destination="TlS-Xl-fvG" id="mln-mv-KVY"/>
+                        <outlet property="editBarButtonItem" destination="oVM-6e-15b" id="OaM-9P-cgU"/>
                         <outlet property="titleLabel" destination="RFf-Rs-UM6" id="0eE-Cl-0Ud"/>
                     </connections>
                 </viewController>
@@ -1048,17 +1049,8 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1oO-7y-cW3">
-                                        <rect key="frame" x="0.0" y="0.0" width="166" height="130"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GGd-4m-JFq">
-                                            <rect key="frame" x="0.0" y="0.0" width="166" height="130"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="166" height="130"/>
-                                    </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LectureCollectionCell" id="7pq-Bt-JY8" customClass="LectureCell" customModule="IK_IK" customModuleProvider="target">
-                                        <rect key="frame" x="177" y="0.0" width="166" height="130"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="166" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kQj-hZ-NUL">
                                             <rect key="frame" x="0.0" y="0.0" width="166" height="130"/>
@@ -1093,42 +1085,6 @@
                                             <segue destination="1Zl-ZL-Ozz" kind="show" id="lgk-yN-LIT"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="msZ-yq-1mg">
-                                        <rect key="frame" x="0.0" y="140" width="167" height="130"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gjW-Py-BGX">
-                                            <rect key="frame" x="0.0" y="0.0" width="167" height="130"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="167" height="130"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XGo-F5-ClK">
-                                        <rect key="frame" x="177" y="140" width="166" height="130"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HcL-ZB-XHT">
-                                            <rect key="frame" x="0.0" y="0.0" width="166" height="130"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="166" height="130"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="8kK-z8-xgv">
-                                        <rect key="frame" x="0.0" y="280" width="167" height="130"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hYj-qW-uzC">
-                                            <rect key="frame" x="0.0" y="0.0" width="167" height="130"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="167" height="130"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="DAc-tw-Ppv">
-                                        <rect key="frame" x="177" y="280" width="166" height="130"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uxG-YV-CGF">
-                                            <rect key="frame" x="0.0" y="0.0" width="166" height="130"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="166" height="130"/>
-                                    </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="Ajk-rB-W3S" id="VDD-6C-jdA"/>
@@ -1151,7 +1107,7 @@
         <!--Check Table View Controller-->
         <scene sceneID="EtX-Rb-zda">
             <objects>
-                <viewController id="1Zl-ZL-Ozz" customClass="CheckTableViewController" customModule="IK_IK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="checkTableVC" id="1Zl-ZL-Ozz" customClass="CheckTableViewController" customModule="IK_IK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hC3-EK-T2U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1229,6 +1185,7 @@
                     <navigationItem key="navigationItem" id="Nyk-eO-7EK"/>
                     <connections>
                         <outlet property="CompleteButton" destination="Kcc-ND-WCL" id="QE4-WA-Ar6"/>
+                        <outlet property="titleLabel" destination="pEg-yd-WQw" id="D4w-ST-2pU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zTs-J2-o2K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1419,7 +1376,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="V9D-hG-tWx"/>
-        <segue reference="LjK-ze-N8X"/>
+        <segue reference="yjs-kN-7dv"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="alarm" catalog="system" width="124" height="128"/>

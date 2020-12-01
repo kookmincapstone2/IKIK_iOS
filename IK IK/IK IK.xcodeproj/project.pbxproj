@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D4296F2A25484E6D00FDF4B1 /* RoomEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4296F2925484E6D00FDF4B1 /* RoomEditViewController.swift */; };
 		D42D4E64256D1E5300BEDE28 /* LectureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D4E63256D1E5300BEDE28 /* LectureViewController.swift */; };
-		D42D4E68256D306400BEDE28 /* LectureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D4E67256D306400BEDE28 /* LectureCell.swift */; };
 		D457848D253821D100A5346C /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457848C253821D100A5346C /* Room.swift */; };
 		D457848F2539912500A5346C /* AttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457848E2539912500A5346C /* AttendanceViewController.swift */; };
 		D4578491253DCFE300A5346C /* RoomCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4578490253DCFE300A5346C /* RoomCreateViewController.swift */; };
@@ -33,6 +32,8 @@
 		D4BEF55725516F580061041D /* StudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BEF55625516F580061041D /* StudentsViewController.swift */; };
 		D4BEF55B255170C30061041D /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BEF55A255170C30061041D /* StudentCell.swift */; };
 		D4BEF55E255BE21F0061041D /* InviteCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BEF55D255BE21F0061041D /* InviteCodeViewController.swift */; };
+		D4EB145725763D03001DF5F3 /* LectureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EB145525763D02001DF5F3 /* LectureCell.swift */; };
+		D4EB145825763D03001DF5F3 /* LectureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4EB145625763D02001DF5F3 /* LectureCell.xib */; };
 		D4F7A9CD2569974500445B36 /* CheckTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F7A9CC2569974500445B36 /* CheckTableViewController.swift */; };
 		D4F7A9CF25699A2E00445B36 /* CheckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F7A9CE25699A2E00445B36 /* CheckCell.swift */; };
 /* End PBXBuildFile section */
@@ -40,7 +41,6 @@
 /* Begin PBXFileReference section */
 		D4296F2925484E6D00FDF4B1 /* RoomEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEditViewController.swift; sourceTree = "<group>"; };
 		D42D4E63256D1E5300BEDE28 /* LectureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureViewController.swift; sourceTree = "<group>"; };
-		D42D4E67256D306400BEDE28 /* LectureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCell.swift; sourceTree = "<group>"; };
 		D457848C253821D100A5346C /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		D457848E2539912500A5346C /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
 		D4578490253DCFE300A5346C /* RoomCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreateViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +66,8 @@
 		D4BEF55625516F580061041D /* StudentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsViewController.swift; sourceTree = "<group>"; };
 		D4BEF55A255170C30061041D /* StudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCell.swift; sourceTree = "<group>"; };
 		D4BEF55D255BE21F0061041D /* InviteCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCodeViewController.swift; sourceTree = "<group>"; };
+		D4EB145525763D02001DF5F3 /* LectureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCell.swift; sourceTree = "<group>"; };
+		D4EB145625763D02001DF5F3 /* LectureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LectureCell.xib; sourceTree = "<group>"; };
 		D4F7A9CC2569974500445B36 /* CheckTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTableViewController.swift; sourceTree = "<group>"; };
 		D4F7A9CE25699A2E00445B36 /* CheckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,8 +88,9 @@
 			children = (
 				D4F7A9CC2569974500445B36 /* CheckTableViewController.swift */,
 				D4F7A9CE25699A2E00445B36 /* CheckCell.swift */,
-				D42D4E67256D306400BEDE28 /* LectureCell.swift */,
 				D42D4E63256D1E5300BEDE28 /* LectureViewController.swift */,
+				D4EB145525763D02001DF5F3 /* LectureCell.swift */,
+				D4EB145625763D02001DF5F3 /* LectureCell.xib */,
 			);
 			path = Check;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4EB145825763D03001DF5F3 /* LectureCell.xib in Resources */,
 				D467332A25220653005363EB /* LaunchScreen.storyboard in Resources */,
 				D467332725220653005363EB /* Assets.xcassets in Resources */,
 				D46733252522064B005363EB /* Main.storyboard in Resources */,
@@ -268,7 +272,7 @@
 				D46733402522074F005363EB /* ErrorResponse.swift in Sources */,
 				D46733202522064B005363EB /* SceneDelegate.swift in Sources */,
 				D467333E252206C5005363EB /* MainViewController.swift in Sources */,
-				D42D4E68256D306400BEDE28 /* LectureCell.swift in Sources */,
+				D4EB145725763D03001DF5F3 /* LectureCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
