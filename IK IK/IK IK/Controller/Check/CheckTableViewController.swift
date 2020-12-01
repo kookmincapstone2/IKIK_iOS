@@ -10,15 +10,19 @@ import UIKit
 
 class CheckTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var titleText = ""
     var checked: [String] = ["가나다", "라마바", "사아자"]
     var unchecked: [String] = ["차카타", "파하"]
     
     let sections: [String] = ["출석", "미출석"]
-    @IBOutlet weak var CompleteButton: UIButton!
+    @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var populatitonLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titleLabel.text = title!
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
