@@ -13,6 +13,9 @@
 		D457848F2539912500A5346C /* AttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457848E2539912500A5346C /* AttendanceViewController.swift */; };
 		D4578491253DCFE300A5346C /* RoomCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4578490253DCFE300A5346C /* RoomCreateViewController.swift */; };
 		D457849325418FB300A5346C /* AttendanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457849225418FB300A5346C /* AttendanceCell.swift */; };
+		D4583E7F25769AB7006A5D80 /* MyInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4583E7E25769AB7006A5D80 /* MyInformationTableViewController.swift */; };
+		D4583E812577E7D8006A5D80 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4583E802577E7D8006A5D80 /* Auth.storyboard */; };
+		D4583E832577E98E006A5D80 /* PassCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4583E822577E98E006A5D80 /* PassCreateViewController.swift */; };
 		D467331E2522064B005363EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467331D2522064B005363EB /* AppDelegate.swift */; };
 		D46733202522064B005363EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467331F2522064B005363EB /* SceneDelegate.swift */; };
 		D46733252522064B005363EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46733232522064B005363EB /* Main.storyboard */; };
@@ -45,6 +48,9 @@
 		D457848E2539912500A5346C /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
 		D4578490253DCFE300A5346C /* RoomCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreateViewController.swift; sourceTree = "<group>"; };
 		D457849225418FB300A5346C /* AttendanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCell.swift; sourceTree = "<group>"; };
+		D4583E7E25769AB7006A5D80 /* MyInformationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInformationTableViewController.swift; sourceTree = "<group>"; };
+		D4583E802577E7D8006A5D80 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		D4583E822577E98E006A5D80 /* PassCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassCreateViewController.swift; sourceTree = "<group>"; };
 		D467331A2522064B005363EB /* IK IK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IK IK.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D467331D2522064B005363EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D467331F2522064B005363EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,9 +96,19 @@
 				D4F7A9CE25699A2E00445B36 /* CheckCell.swift */,
 				D42D4E63256D1E5300BEDE28 /* LectureViewController.swift */,
 				D4EB145525763D02001DF5F3 /* LectureCell.swift */,
+				D4583E822577E98E006A5D80 /* PassCreateViewController.swift */,
 				D4EB145625763D02001DF5F3 /* LectureCell.xib */,
 			);
 			path = Check;
+			sourceTree = "<group>";
+		};
+		D4583E7D25769A4D006A5D80 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				D4673372252DCC90005363EB /* MyPageViewController.swift */,
+				D4583E7E25769AB7006A5D80 /* MyInformationTableViewController.swift */,
+			);
+			path = MyPage;
 			sourceTree = "<group>";
 		};
 		D46733112522064B005363EB = {
@@ -117,6 +133,7 @@
 				D467331D2522064B005363EB /* AppDelegate.swift */,
 				D467331F2522064B005363EB /* SceneDelegate.swift */,
 				D46733232522064B005363EB /* Main.storyboard */,
+				D4583E802577E7D8006A5D80 /* Auth.storyboard */,
 				D4673374252DCCC2005363EB /* Controller */,
 				D467334125220F45005363EB /* FormTextField.swift */,
 				D467332625220653005363EB /* Assets.xcassets */,
@@ -136,8 +153,8 @@
 			children = (
 				D4F7A9CA256190AD00445B36 /* Auth */,
 				D4F7A9CB256190D200445B36 /* Main */,
-				D4673372252DCC90005363EB /* MyPageViewController.swift */,
 				D42D4E66256D2F6800BEDE28 /* Check */,
+				D4583E7D25769A4D006A5D80 /* MyPage */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -236,6 +253,7 @@
 			files = (
 				D4EB145825763D03001DF5F3 /* LectureCell.xib in Resources */,
 				D467332A25220653005363EB /* LaunchScreen.storyboard in Resources */,
+				D4583E812577E7D8006A5D80 /* Auth.storyboard in Resources */,
 				D467332725220653005363EB /* Assets.xcassets in Resources */,
 				D46733252522064B005363EB /* Main.storyboard in Resources */,
 			);
@@ -250,9 +268,11 @@
 			files = (
 				D457849325418FB300A5346C /* AttendanceCell.swift in Sources */,
 				D42D4E64256D1E5300BEDE28 /* LectureViewController.swift in Sources */,
+				D4583E7F25769AB7006A5D80 /* MyInformationTableViewController.swift in Sources */,
 				D4F7A9CF25699A2E00445B36 /* CheckCell.swift in Sources */,
 				D46733322522067B005363EB /* User.swift in Sources */,
 				D457848D253821D100A5346C /* Room.swift in Sources */,
+				D4583E832577E98E006A5D80 /* PassCreateViewController.swift in Sources */,
 				D467333825220699005363EB /* AlertService.swift in Sources */,
 				D457848F2539912500A5346C /* AttendanceViewController.swift in Sources */,
 				D467333A252206A0005363EB /* LoginViewController.swift in Sources */,

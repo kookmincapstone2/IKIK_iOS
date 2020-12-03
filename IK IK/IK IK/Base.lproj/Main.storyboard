@@ -259,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9Z-SF-f2l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1022" y="887"/>
+            <point key="canvasLocation" x="1022" y="791"/>
         </scene>
         <!--Students View Controller-->
         <scene sceneID="TJg-r7-Jhf">
@@ -450,7 +450,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDl-6F-ASF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5209" y="-957"/>
+            <point key="canvasLocation" x="5209" y="-1264"/>
         </scene>
         <!--Room Create View Controller-->
         <scene sceneID="rLd-DD-CpE">
@@ -651,7 +651,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jzx-KZ-zXi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="gTC-re-ZAC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6151.1999999999998" y="-287.4384236453202"/>
+            <point key="canvasLocation" x="5209" y="-180"/>
         </scene>
         <!--Room Enter View Controller-->
         <scene sceneID="UCX-EK-W88">
@@ -943,7 +943,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q9i-AV-fej" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5210.3999999999996" y="115.27093596059113"/>
+            <point key="canvasLocation" x="4270" y="100"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="LFJ-QT-IIc">
@@ -1028,7 +1028,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVx-2P-AL3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3438" y="799"/>
+            <point key="canvasLocation" x="2617" y="100"/>
         </scene>
         <!--Lecture View Controller-->
         <scene sceneID="ZF0-4W-BwM">
@@ -1081,9 +1081,6 @@
                                             <color key="backgroundColor" red="0.49803921569999998" green="0.72156862749999995" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="166" height="130"/>
-                                        <connections>
-                                            <segue destination="1Zl-ZL-Ozz" kind="show" id="lgk-yN-LIT"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -1098,18 +1095,19 @@
                     <navigationItem key="navigationItem" id="EoY-4H-WAt"/>
                     <connections>
                         <outlet property="collectionView" destination="kGQ-7e-LZ2" id="PXl-fm-CRC"/>
+                        <segue destination="ex8-ee-AAl" kind="presentation" identifier="toPassCreateVC" id="ROJ-tm-fFd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z2S-PN-l7p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3438" y="115"/>
+            <point key="canvasLocation" x="3438" y="791"/>
         </scene>
         <!--Check Table View Controller-->
         <scene sceneID="EtX-Rb-zda">
             <objects>
                 <viewController storyboardIdentifier="checkTableVC" id="1Zl-ZL-Ozz" customClass="CheckTableViewController" customModule="IK_IK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hC3-EK-T2U">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r2t-bO-5iq">
@@ -1122,12 +1120,19 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="수업명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEg-yd-WQw">
                                             <rect key="frame" x="19" y="25" width="210" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="출석코드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dJ-aB-3HK">
+                                            <rect key="frame" x="19" y="54" width="123" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00 / 00 명 출석중" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGc-Do-LVn">
-                                            <rect key="frame" x="19" y="69" width="123" height="21"/>
+                                            <rect key="frame" x="19" y="83" width="123" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -1184,13 +1189,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="Nyk-eO-7EK"/>
                     <connections>
-                        <outlet property="CompleteButton" destination="Kcc-ND-WCL" id="QE4-WA-Ar6"/>
+                        <outlet property="completeButton" destination="Kcc-ND-WCL" id="skN-zL-wge"/>
+                        <outlet property="passNumLabel" destination="7dJ-aB-3HK" id="d25-q1-8xq"/>
+                        <outlet property="populatitonLabel" destination="fGc-Do-LVn" id="v2J-9X-fm6"/>
                         <outlet property="titleLabel" destination="pEg-yd-WQw" id="D4w-ST-2pU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zTs-J2-o2K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4269.6000000000004" y="114.53201970443351"/>
+            <point key="canvasLocation" x="5208.8000000000002" y="790.64039408866995"/>
         </scene>
         <!--My Page View Controller-->
         <scene sceneID="Zrp-bN-qc8">
@@ -1223,12 +1230,89 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKg-o5-qQb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3502" y="1450"/>
+            <point key="canvasLocation" x="3438" y="1450"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Pass Create View Controller-->
+        <scene sceneID="Jbp-aL-M0J">
+            <objects>
+                <viewController storyboardIdentifier="passCreateVC" id="ex8-ee-AAl" customClass="PassCreateViewController" customModule="IK_IK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d9Z-lZ-M5r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="msT-bQ-gnd">
+                                <rect key="frame" x="53" y="204" width="269" height="350"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="인증번호 (8자리 숫자)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R4y-Jp-QcT" customClass="FormTextField" customModule="IK_IK" customModuleProvider="target">
+                                        <rect key="frame" x="34" y="142" width="200" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8O-SZ-Qll">
+                                        <rect key="frame" x="42" y="200" width="184" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.43847179409999998" green="0.74077039960000002" blue="0.75686961409999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="생성">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didTapCreateButton:" destination="ex8-ee-AAl" eventType="touchUpInside" id="UrW-La-eY2"/>
+                                            <action selector="didTapCreateButton:" destination="yeH-WF-yOs" eventType="touchUpInside" id="dgd-oZ-RGJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nwd-qP-kNj">
+                                        <rect key="frame" x="42" y="238" width="184" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="취소">
+                                            <color key="titleColor" red="0.43847179409999998" green="0.74077039960000002" blue="0.75686961409999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                <color key="value" red="0.43847179409999998" green="0.74077039960000002" blue="0.75686961409999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didTapCancelButton:" destination="ex8-ee-AAl" eventType="touchUpInside" id="gae-8j-sP0"/>
+                                            <action selector="didTapCancelButton:" destination="yeH-WF-yOs" eventType="touchUpInside" id="mfK-Dp-sWf"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="출석 인증번호 생성" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eoi-br-yX7">
+                                        <rect key="frame" x="71" y="84" width="127" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="aur-6z-ZS4"/>
+                    </view>
+                    <connections>
+                        <outlet property="passNumLabel" destination="R4y-Jp-QcT" id="1gc-c9-Wmo"/>
+                        <segue destination="1Zl-ZL-Ozz" kind="show" identifier="toCheckTableVC" id="PoN-yI-Xnr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rsy-FM-ymE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4269.6000000000004" y="790.64039408866995"/>
+        </scene>
+        <!--My Information Table View Controller-->
         <scene sceneID="rT4-8h-h2Y">
             <objects>
-                <tableViewController id="CNu-l7-DhP" sceneMemberID="viewController">
+                <tableViewController id="CNu-l7-DhP" customClass="MyInformationTableViewController" customModule="IK_IK" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VEM-h3-OlK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="415"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1256,7 +1340,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20175165" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozw-pK-xKk">
-                                                    <rect key="frame" x="101" y="54" width="76" height="21"/>
+                                                    <rect key="frame" x="101" y="54" width="210" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1311,10 +1395,14 @@
                             <outlet property="delegate" destination="CNu-l7-DhP" id="D8F-Wa-8Bu"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="emailLabel" destination="Ozw-pK-xKk" id="hBE-El-Glp"/>
+                        <outlet property="nameLabel" destination="E8Q-Cz-H2G" id="PxF-9I-FrQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FzG-1m-dpr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4266" y="1302"/>
+            <point key="canvasLocation" x="4268" y="1361"/>
         </scene>
         <!--시간표-->
         <scene sceneID="Xwo-PP-3tp">
@@ -1371,12 +1459,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5QQ-QU-ShV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2617" y="115"/>
+            <point key="canvasLocation" x="2617" y="791"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="V9D-hG-tWx"/>
-        <segue reference="yjs-kN-7dv"/>
+        <segue reference="LjK-ze-N8X"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="alarm" catalog="system" width="124" height="128"/>
