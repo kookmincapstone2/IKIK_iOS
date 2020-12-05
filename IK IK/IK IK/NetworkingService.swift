@@ -208,6 +208,24 @@ class NetworkingService {
                                 }
                                 
                                 completion(.success(studentList))
+                                
+                            } else if let checked = json["checked"] {
+                                if let unchecked = json["unchecked"] {
+                                    var studentList = [[],[]]
+                                    
+                                    for (_, student) in checked as! [String: Any] {
+                                        let studentData = try JSONSerialization.data(withJSONObject: student)
+                                        studentList[0].append(try JSONDecoder().decode(User.self, from: studentData).name)
+                                    }
+                                    
+                                    for (_, student) in unchecked as! [String: Any] {
+                                        let studentData = try JSONSerialization.data(withJSONObject: student)
+                                        let user = try JSONDecoder().decode(User.self, from: studentData)
+                                        if user.rank == "student" { studentList[1].append(user.name) }
+                                    }
+                                    
+                                    completion(.success(studentList))
+                                }
                             }
                             
                             // completion(.success(nil))
