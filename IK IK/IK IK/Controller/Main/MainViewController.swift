@@ -43,13 +43,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc func reload(_ notification: Notification) {
-        print("reload")
         if let room = notification.userInfo?["room"] as? Room {
             if let found = myRoomList.firstIndex(where: { $0.roomId == room.roomId }) {
                 myRoomList[found] = room
             }
         }
-        
         self.mainTableView.reloadData()
     }
     
@@ -62,9 +60,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             myRoomList.append(from.newRoom!)
             
         } else if let from = sender.source as? RoomEditViewController {
-            print("RoomEditViewController", from)
             if let found = myRoomList.firstIndex(where: { $0.roomId == from.roomData!.roomId }) {
-                print("deleted")
                 myRoomList.remove(at: found)
             }
         }
@@ -109,7 +105,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("did select row at")
+        
         selectedRoom = myRoomList[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
         if let rank = UserDefaults.standard.string(forKey: "rank") {
@@ -130,7 +126,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("prepare")
+        
         if segue.identifier == "teacherView" {
             let destination = segue.destination as! StudentsViewController
             destination.roomData = selectedRoom

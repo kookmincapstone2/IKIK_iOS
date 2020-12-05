@@ -31,6 +31,7 @@ class NetworkingService {
         let request: URLRequest
         
         switch method {
+            
         case "GET", "DELETE":
             request = makeQueryRequest(url: url, method: method, parameters: parameters)
             
@@ -51,7 +52,7 @@ class NetworkingService {
         }
         
         let request = makeQueryRequest(url: url, method: "GET", parameters: parameters)
-            
+        
         handleResponse(for: request, completion: completion)
     }
     
@@ -109,7 +110,6 @@ class NetworkingService {
                 }
                 
                 print(unwrappedResponse.statusCode)
-                print(String(data: data!, encoding: .utf8))
                 switch unwrappedResponse.statusCode {
                     
                 case 200..<300 :
@@ -188,16 +188,15 @@ class NetworkingService {
                             let json = try JSONSerialization.jsonObject(with: unwrappedData, options: .allowFragments) as! [String: Any]
                             print(json)
                             
-                            print(request)
                             // member-GET(roomList)
                             if json.keys.contains("0") {
                                 var roomList = [Room]()
                                 
                                 for (_, room) in json {
-                                    print(room.self)
                                     let roomData = try JSONSerialization.data(withJSONObject: room)
                                     roomList.append(try JSONDecoder().decode(Room.self, from: roomData))
                                 }
+                                
                                 completion(.success(roomList))
                             } else if json.keys.contains("User") {
                                 var studentList = [User]()
@@ -210,10 +209,9 @@ class NetworkingService {
                                     }
                                     
                                 }
+                                
                                 completion(.success(studentList))
                             }
-                            
-                            
                             
                             // completion(.success(nil))
                             // } else {

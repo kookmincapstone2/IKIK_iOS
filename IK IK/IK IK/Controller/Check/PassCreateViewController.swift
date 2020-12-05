@@ -19,8 +19,6 @@ class PassCreateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     
     // MARK: - IBActions
@@ -53,15 +51,11 @@ class PassCreateViewController: UIViewController {
             switch result {
                 
             case .success:
-                // TODO: passnum 넘겨주고 segue perform
                 let checkTableVC = (self?.storyboard?.instantiateViewController(withIdentifier: "checkTableVC")) as! CheckTableViewController
                 
                 self?.dismiss(animated: true, completion: {
                     self?.previousVC?.navigationController?.pushViewController(checkTableVC, animated: false)
-                    print(self?.parent)
                 })
-                
-                //                self?.performSegue(withIdentifier: "toCheckTableVC", sender: self)
                 
             case .failure(let error):
                 // did not enter any room yet
@@ -70,14 +64,5 @@ class PassCreateViewController: UIViewController {
             }
             self?.dismiss(animated: true, completion: nil)
         })
-    }
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("prepare")
-        if segue.identifier == "toCheckTableVC" {
-            let destination = segue.destination as! CheckTableViewController
-            destination.passNum = passNumLabel.text!
-        }
     }
 }

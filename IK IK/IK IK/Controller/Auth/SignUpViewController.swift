@@ -116,11 +116,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             switch result {
                 
             case .success:
+                // TODO: 회원가입 성공시 메세지 및 애니메이션 효과 추가
                 self?.dismiss(animated: true, completion: nil)
-                break
-                
+                                
             case .failure(let error):
-                // alert to fill all parameter
+                // TODO: 필수입력 다 차지 않은경우, 중복 이메일, 전화번호 -> error 다르게 처리
+                
                 guard let alert = self?.alertService.alert(message: error.localizedDescription) else { return }
                 self?.present(alert, animated: true)
             }

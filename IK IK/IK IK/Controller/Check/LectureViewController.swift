@@ -23,12 +23,10 @@ class LectureViewController: UIViewController, UICollectionViewDataSource, UICol
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "LectureCell", bundle: .main), forCellWithReuseIdentifier: "LectureCell")
         setupFlowLayout()
-
+        
         if let userId = UserDefaults.standard.string(forKey: "userid") {
             getMyRooms(userId: Int(userId)!)
         }
-
-        
     }
     
     func getMyRooms(userId: Int) {
@@ -78,12 +76,14 @@ class LectureViewController: UIViewController, UICollectionViewDataSource, UICol
     
     private func setupFlowLayout() {    // CollectionView Cell 크기 바꾸는 함수
         let flowLayout = UICollectionViewFlowLayout()
+        
         flowLayout.sectionInset = UIEdgeInsets.zero 
         flowLayout.minimumInteritemSpacing = 10
         flowLayout.minimumLineSpacing = 24
         
         let halfWidth = UIScreen.main.bounds.width / 2
         flowLayout.itemSize = CGSize(width: halfWidth * 0.85 , height: halfWidth * 0.85)
+        
         self.collectionView.collectionViewLayout = flowLayout
     }
     

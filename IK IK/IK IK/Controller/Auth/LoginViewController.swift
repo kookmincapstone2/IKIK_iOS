@@ -22,6 +22,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func autoLogin() {
+        // TODO: 자동로그인시 loading progress
         if let email = UserDefaults.standard.string(forKey: "email") {
             if let pw = UserDefaults.standard.string(forKey: "pw") {
                 formDataRequest(email: email, pw: pw)
