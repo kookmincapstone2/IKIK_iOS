@@ -35,11 +35,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             getMyRooms(userId: Int(userId)!)
         }
         
-        if let rank = UserDefaults.standard.string(forKey: "rank") {
-            if rank == "teacher" { enterButton.isHidden = true }
-            else { createButton.isHidden = true }
+        if let rank = UserDefaults.standard.string(forKey: "rank"), rank == "teacher" {
+            enterButton.isHidden = true
+        } else {
+            createButton.isHidden = true
         }
-        
     }
     
     @objc func reload(_ notification: Notification) {

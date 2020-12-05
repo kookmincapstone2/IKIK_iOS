@@ -23,10 +23,10 @@ class AttendanceViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if UserDefaults.standard.string(forKey: "rank") == "student" {
-            self.navigationItem.rightBarButtonItem = self.editBarButtonItem
-        } else {
+        if let rank = UserDefaults.standard.string(forKey: "rank"), rank == "teacher" {
             self.navigationItem.rightBarButtonItem = nil
+        } else {
+            self.navigationItem.rightBarButtonItem = self.editBarButtonItem
         }
         
         titleLabel.text = roomData?.title

@@ -25,14 +25,12 @@ class RoomEditViewController: UIViewController {
         titleTextField.text = roomData?.title
         populationTextField.text = (roomData?.maximumPopulation).map{ String($0) }
         
-        if let rank = UserDefaults.standard.string(forKey: "rank") {
-            if rank == "student" {
-                titleTextField.isUserInteractionEnabled = false
-                populationTextField.isUserInteractionEnabled = false
-                deleteButton.isHidden = true
-            } else {
-                leaveButton.isHidden = true
-            }
+        if let rank = UserDefaults.standard.string(forKey: "rank"), rank == "teacher" {
+            leaveButton.isHidden = true
+        } else {
+            titleTextField.isUserInteractionEnabled = false
+            populationTextField.isUserInteractionEnabled = false
+            deleteButton.isHidden = true
         }
     }
     
