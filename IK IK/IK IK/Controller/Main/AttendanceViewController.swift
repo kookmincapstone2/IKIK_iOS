@@ -18,7 +18,7 @@ class AttendanceViewController: UIViewController, UITableViewDataSource {
     var roomData: Room?
     var dates: [String] = ["2020년 9월 2일 (수)", "2020년 9월 9일 (수)", "2020년 9월 16일 (수)", "2020년 9월 23일 (수)"
                             , "2020년 9월 30일 (수)", "2020년 10월 7일 (수)"]
-    var images: [String?] = ["checkmark.circle", "xmark.circle", "ellipsis.circle", "checkmark.circle", "checkmark.circle", "checkmark.circle"]
+    var images: [String?] = ["checkmark.circle", "xmark.circle", "xmark.circle", "checkmark.circle", "checkmark.circle", "checkmark.circle"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,19 +50,19 @@ class AttendanceViewController: UIViewController, UITableViewDataSource {
         let image = images[indexPath.row]
         
         cell.dateLabel.text = date
+        cell.attendanceImageView.image = UIImage(systemName: image!)
         
         switch image {
             
         case "xmark.circle":
-            cell.attendanceImageView.image = UIImage(systemName: "xmark.circle")
             cell.attendanceImageView.tintColor = UIColor.systemRed
             
-        case "ellipsis.circle":
-            cell.attendanceImageView.image = UIImage(systemName: "ellipsis.circle")
-            cell.attendanceImageView.tintColor = UIColor.systemGray4
+//        case "ellipsis.circle":
+//            cell.attendanceImageView.image = UIImage(systemName: "ellipsis.circle")
+//            cell.attendanceImageView.tintColor = UIColor.systemGray4
             
         default:
-            cell.attendanceImageView.image = UIImage(systemName: "checkmark.circle")
+            break
         }
         
         return cell
