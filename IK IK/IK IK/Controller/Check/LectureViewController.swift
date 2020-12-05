@@ -9,12 +9,13 @@
 import UIKit
 
 class LectureViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-
-//    var lectures = ["캡스톤 디자인 프로젝트", "컴퓨터비전", "모바일프로그래밍", "알고리즘", "캡스톤 디자인 프로젝트", "컴퓨터비전", "모바일프로그래밍", "알고리즘"]
-    var lectures = [String]()
+    
+    var roomList = [Room]()
+    var selected: Room?
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var networkingService = NetworkingService()
+    let networkingService = NetworkingService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +39,12 @@ class LectureViewController: UIViewController, UICollectionViewDataSource, UICol
             switch result {
                 
             case .success(let roomList):
-                self?.lectures = (roomList as? [Room])!.map {$0.title}.sorted()
+                self?.roomList = roomList as! [Room]
+                self?.roomList.sort(by: {$0.title < $1.title})
                 self?.collectionView.reloadData()
                 
             case .failure(let error):
-                self?.lectures = []
+                self?.roomList = []
                 print("getting room error", error) // did not enter any room yet
                 break
             }
@@ -50,7 +52,7 @@ class LectureViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return lectures.count
+        return roomList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -58,20 +60,28 @@ class LectureViewController: UIViewController, UICollectionViewDataSource, UICol
             return UICollectionViewCell()
         }
         
-        cell.titleLabel.text = lectures[indexPath.row]
+        cell.titleLabel.text = roomList[indexPath.row].title
         cell.titleLabel.adjustsFontSizeToFitWidth = true
         cell.titleLabel.lineBreakMode = .byWordWrapping
+        
+        cell.populationLabel.text = "\(roomList[indexPath.row].maximumPopulation)명"
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
-        let checkTableVC = (self.storyboard?.instantiateViewController(withIdentifier: "checkTableVC")) as! CheckTableViewController
-
-        checkTableVC.title = self.lectures[indexPath.row]
-
-       self.navigationController?.pushViewController(checkTableVC, animated: true)
+        
+        selected = self.roomList[indexPath.row]
+        
+        if let rank = UserDefaults.standard.string(forKey: "rank"), rank == "teacher" {
+            self.performSegue(withIdentifier: "toPassCreateVC", sender: self)
+        } else {
+            let studentCheckVC = (self.storyboard?.instantiateViewController(withIdentifier: "studentCheckVC")) as! StudentCheckViewController
+            studentCheckVC.roomTitle = selected?.title
+            studentCheckVC.roomId = selected?.roomId
+            
+            self.navigationController?.pushViewController(studentCheckVC, animated: true)
+        }
     }
     
     private func setupFlowLayout() {    // CollectionView Cell 크기 바꾸는 함수
@@ -87,14 +97,13 @@ class LectureViewController: UIViewController, UICollectionViewDataSource, UICol
         self.collectionView.collectionViewLayout = flowLayout
     }
     
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toPassCreateVC" {
+            let destination = segue.destination as! PassCreateViewController
+            
+            destination.roomData = selected
+            destination.previousVC = self
+        }
     }
-    */
-
 }
