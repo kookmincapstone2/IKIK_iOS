@@ -16,6 +16,7 @@
 		D4583E7F25769AB7006A5D80 /* MyInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4583E7E25769AB7006A5D80 /* MyInformationTableViewController.swift */; };
 		D4583E812577E7D8006A5D80 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4583E802577E7D8006A5D80 /* Auth.storyboard */; };
 		D4583E832577E98E006A5D80 /* PassCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4583E822577E98E006A5D80 /* PassCreateViewController.swift */; };
+		D4583E85257A87B7006A5D80 /* StudentCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4583E84257A87B6006A5D80 /* StudentCheckViewController.swift */; };
 		D467331E2522064B005363EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467331D2522064B005363EB /* AppDelegate.swift */; };
 		D46733202522064B005363EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467331F2522064B005363EB /* SceneDelegate.swift */; };
 		D46733252522064B005363EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46733232522064B005363EB /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		D4583E7E25769AB7006A5D80 /* MyInformationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInformationTableViewController.swift; sourceTree = "<group>"; };
 		D4583E802577E7D8006A5D80 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		D4583E822577E98E006A5D80 /* PassCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassCreateViewController.swift; sourceTree = "<group>"; };
+		D4583E84257A87B6006A5D80 /* StudentCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCheckViewController.swift; sourceTree = "<group>"; };
 		D467331A2522064B005363EB /* IK IK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IK IK.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D467331D2522064B005363EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D467331F2522064B005363EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				D42D4E63256D1E5300BEDE28 /* LectureViewController.swift */,
 				D4EB145525763D02001DF5F3 /* LectureCell.swift */,
 				D4583E822577E98E006A5D80 /* PassCreateViewController.swift */,
+				D4583E84257A87B6006A5D80 /* StudentCheckViewController.swift */,
 				D4EB145625763D02001DF5F3 /* LectureCell.xib */,
 			);
 			path = Check;
@@ -280,6 +283,7 @@
 				D46733362522068F005363EB /* NetworkingService.swift in Sources */,
 				D467333C252206BA005363EB /* SignUpViewController.swift in Sources */,
 				D4F7A9CD2569974500445B36 /* CheckTableViewController.swift in Sources */,
+				D4583E85257A87B7006A5D80 /* StudentCheckViewController.swift in Sources */,
 				D467334225220F45005363EB /* FormTextField.swift in Sources */,
 				D4673376252DDFE1005363EB /* RoomCell.swift in Sources */,
 				D4578491253DCFE300A5346C /* RoomCreateViewController.swift in Sources */,

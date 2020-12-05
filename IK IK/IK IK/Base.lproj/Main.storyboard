@@ -332,10 +332,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1B-5P-bzl">
-                                <rect key="frame" x="269" y="111" width="90" height="30"/>
+                                <rect key="frame" x="217" y="111" width="142" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.43847179409999998" green="0.74077039960000002" blue="0.75686961409999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="초대 코드">
+                                <state key="normal" title="초대 코드 공유">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -346,19 +346,6 @@
                                 <connections>
                                     <segue destination="yNu-FB-kts" kind="presentation" identifier="codeView" id="vPI-BZ-J8J"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihS-fq-F33">
-                                <rect key="frame" x="269" y="146" width="90" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.43847179409999998" green="0.74077039960000002" blue="0.75686961409999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="인증 생성">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="수업" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAb-qD-zUI">
                                 <rect key="frame" x="16" y="100" width="210" height="21"/>
@@ -387,7 +374,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="78g-UQ-tCP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4270" y="-582"/>
+            <point key="canvasLocation" x="4269.6000000000004" y="-582.26600985221683"/>
         </scene>
         <!--Invite Code View Controller-->
         <scene sceneID="41X-54-k9z">
@@ -967,10 +954,10 @@
             </objects>
             <point key="canvasLocation" x="1760.8" y="115.27093596059113"/>
         </scene>
-        <!--View Controller-->
+        <!--Student Check View Controller-->
         <scene sceneID="g2u-8f-Tyk">
             <objects>
-                <viewController id="C7q-ov-kus" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="studentCheckVC" id="C7q-ov-kus" customClass="StudentCheckViewController" customModule="IK_IK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ln9-tn-4Rb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1019,16 +1006,23 @@
                                 <state key="normal" title="출석">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapCheckButton:" destination="C7q-ov-kus" eventType="touchUpInside" id="Toh-BF-HQn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="l1H-a8-Q0L"/>
                     </view>
                     <navigationItem key="navigationItem" id="FDD-rY-Su0"/>
+                    <connections>
+                        <outlet property="passNumTextField" destination="CG7-Ci-oaO" id="AHE-IR-flF"/>
+                        <outlet property="titleLabel" destination="5Ml-Ot-hA5" id="MJq-j1-aHE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVx-2P-AL3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2617" y="100"/>
+            <point key="canvasLocation" x="2616.8000000000002" y="99.753694581280797"/>
         </scene>
         <!--Lecture View Controller-->
         <scene sceneID="ZF0-4W-BwM">
@@ -1192,6 +1186,7 @@
                         <outlet property="completeButton" destination="Kcc-ND-WCL" id="skN-zL-wge"/>
                         <outlet property="passNumLabel" destination="7dJ-aB-3HK" id="d25-q1-8xq"/>
                         <outlet property="populatitonLabel" destination="fGc-Do-LVn" id="v2J-9X-fm6"/>
+                        <outlet property="tableView" destination="r2t-bO-5iq" id="ryR-cw-AEl"/>
                         <outlet property="titleLabel" destination="pEg-yd-WQw" id="D4w-ST-2pU"/>
                     </connections>
                 </viewController>
@@ -1301,7 +1296,7 @@
                         <viewLayoutGuide key="safeArea" id="aur-6z-ZS4"/>
                     </view>
                     <connections>
-                        <outlet property="passNumLabel" destination="R4y-Jp-QcT" id="1gc-c9-Wmo"/>
+                        <outlet property="passNumTextField" destination="R4y-Jp-QcT" id="1gc-c9-Wmo"/>
                         <segue destination="1Zl-ZL-Ozz" kind="show" identifier="toCheckTableVC" id="PoN-yI-Xnr"/>
                     </connections>
                 </viewController>
