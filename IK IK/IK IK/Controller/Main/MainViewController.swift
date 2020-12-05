@@ -108,19 +108,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         selectedRoom = myRoomList[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
-        if let rank = UserDefaults.standard.string(forKey: "rank") {
-            switch rank {
-            case "teacher":
-                print("perform teacher")
-                performSegue(withIdentifier: "teacherView", sender: tableView)
-                
-            case "student":
-                print("perform student")
-                performSegue(withIdentifier: "studentView", sender: tableView)
-                
-            default:
-                print("rank error")
-            }
+        
+        if let rank = UserDefaults.standard.string(forKey: "rank"), rank == "teacher" {
+            performSegue(withIdentifier: "teacherView", sender: tableView)
+        } else {
+            performSegue(withIdentifier: "studentView", sender: tableView)
         }
     }
     
