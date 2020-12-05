@@ -198,16 +198,13 @@ class NetworkingService {
                                 }
                                 
                                 completion(.success(roomList))
-                            } else if json.keys.contains("User") {
+                                
+                            } else if let userList = json["User"] {
                                 var studentList = [User]()
                                 
-                                if let userList = json["User"] {
-                                    print(userList)
-                                    for user in userList as! [Any]  {
-                                        let userData = try JSONSerialization.data(withJSONObject: user)
-                                        studentList.append(try JSONDecoder().decode(User.self, from: userData))
-                                    }
-                                    
+                                for user in userList as! [Any]  {
+                                    let userData = try JSONSerialization.data(withJSONObject: user)
+                                    studentList.append(try JSONDecoder().decode(User.self, from: userData))
                                 }
                                 
                                 completion(.success(studentList))
