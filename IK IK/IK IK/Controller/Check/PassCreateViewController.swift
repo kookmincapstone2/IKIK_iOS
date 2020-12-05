@@ -10,10 +10,10 @@ import UIKit
 
 class PassCreateViewController: UIViewController {
     
-    var roomId: Int?
+    var roomData: Room?
     var previousVC: UIViewController?
     
-    @IBOutlet weak var passNumLabel: FormTextField!
+    @IBOutlet weak var passNumTextField: FormTextField!
     
     let networkingService = NetworkingService()
     
@@ -26,8 +26,8 @@ class PassCreateViewController: UIViewController {
         
         guard
             let userId = UserDefaults.standard.string(forKey: "userid"),
-            let roomId = roomId,
-            let passNum = passNumLabel.text
+            let roomId = roomData?.roomId,
+            let passNum = passNumTextField.text
             else { return }
         
         passNumCreationRequest(userId: userId, roomId: String(roomId), passNum: passNum)
@@ -54,6 +54,9 @@ class PassCreateViewController: UIViewController {
                 let checkTableVC = (self?.storyboard?.instantiateViewController(withIdentifier: "checkTableVC")) as! CheckTableViewController
                 
                 self?.dismiss(animated: true, completion: {
+                    checkTableVC.roomData = self!.roomData
+                    checkTableVC.passNum = self!.passNumTextField.text!
+                    
                     self?.previousVC?.navigationController?.pushViewController(checkTableVC, animated: false)
                 })
                 
