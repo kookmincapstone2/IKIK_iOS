@@ -22,6 +22,10 @@ class FormTextField: UITextField {
         self.leftView = leftView
         self.leftViewMode = .always
         
+        let rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 2.0))
+        self.rightView = rightView
+        self.rightViewMode = .always
+        
         
 //        let underlineView = UIView()
 //        underlineView.translatesAutoresizingMaskIntoConstraints = false
