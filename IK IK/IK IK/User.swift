@@ -16,10 +16,12 @@ struct User: Decodable {
     let studentId: Int?
     let tel: String?
     let rank: String?
+    let rateInfo: [String:Double]?
     
     enum CodingKeys: String, CodingKey {
         case userId = "user_id"
         case studentId = "student_id"
+        case rateInfo = "rate_info"
         case name, email, pw, tel, rank
     }
 }

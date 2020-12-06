@@ -199,18 +199,7 @@ class NetworkingService {
                                 
                                 completion(.success(roomList))
                                 
-                            } else if let userList = json["User"] {
-                                var studentList = [User]()
-                                
-                                for user in userList as! [Any]  {
-                                    let userData = try JSONSerialization.data(withJSONObject: user)
-                                    studentList.append(try JSONDecoder().decode(User.self, from: userData))
-                                }
-                                
-                                completion(.success(studentList))
-                                
-                            } else if let checked = json["checked"] {
-                                if let unchecked = json["unchecked"] {
+                            } else if let checked = json["checked"], let unchecked = json["unchecked"] {
                                     var studentList = [[],[]]
                                     
                                     for (_, student) in checked as! [String: Any] {
@@ -225,7 +214,32 @@ class NetworkingService {
                                     }
                                     
                                     completion(.success(studentList))
+                                
+                            } else if let studentData = json["User"] {
+                                var studentList = [User]()
+                                
+                                for (_, user) in studentData as! [String: [String:Any]]  {
+                                    let userData = try JSONSerialization.data(withJSONObject: user)
+                                    studentList.append(try JSONDecoder().decode(User.self, from: userData))
                                 }
+                                
+                                completion(.success(studentList))
+                                
+                            } else if let attendanceData = json["Date"] {
+                                var attendanceDict = [[String: Bool]]()
+                                
+                                for (date, attendanceInfo) in attendanceData as! [String: [String: Any]]  {
+                                    let checkInfo = try JSONSerialization.data(withJSONObject: attendanceInfo)
+//                                    attendanceDict[0].append(try JSONDecoder().decode(User.self, from: userData))
+                                    
+                                    if attendanceDict == [] {
+                                        attendanceDict.append([date: try JSONDecoder().decode(Check.self, from: checkInfo).attendance_check_is_checked])
+                                    } else {
+                                        attendanceDict[0].updateValue(try JSONDecoder().decode(Check.self, from: checkInfo).attendance_check_is_checked, forKey: date)
+                                    }
+                                }
+                                
+                                completion(.success(attendanceDict))
                             }
                             
                             // completion(.success(nil))
