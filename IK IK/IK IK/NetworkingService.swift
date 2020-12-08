@@ -218,9 +218,12 @@ class NetworkingService {
                             } else if let studentData = json["User"] {
                                 var studentList = [User]()
                                 
-                                for (_, user) in studentData as! [String: [String:Any]]  {
-                                    let userData = try JSONSerialization.data(withJSONObject: user)
-                                    studentList.append(try JSONDecoder().decode(User.self, from: userData))
+                                for (_, userObject) in studentData as! [String: [String:Any]]  {
+                                    let studentData = try JSONSerialization.data(withJSONObject: userObject)
+                                    let student = try JSONDecoder().decode(User.self, from: studentData)
+                                    if student.rank == "student" {
+                                        studentList.append(student)
+                                    }
                                 }
                                 
                                 completion(.success(studentList))
