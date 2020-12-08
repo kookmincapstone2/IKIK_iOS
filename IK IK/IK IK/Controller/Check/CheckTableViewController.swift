@@ -10,24 +10,98 @@ import UIKit
 
 class CheckTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var titleText = ""
-    var checked: [String] = ["가나다", "라마바", "사아자"]
-    var unchecked: [String] = ["차카타", "파하"]
+    var roomData: Room?
+    var roomId: String?
+    var passNum = ""
     
-    let sections: [String] = ["출석", "미출석"]
+    var checked = [String]()
+    var unchecked = [String]()
+    var timer: Timer?
+    
     @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var passNumLabel: UILabel!
     @IBOutlet weak var populatitonLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    let sections: [String] = ["출석", "미출석"]
+    let networkingService = NetworkingService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.text = title!
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        titleLabel.text = roomData?.title
+        passNumLabel.text = "출석 코드: \(passNum)"
         
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+
+        if let userId = UserDefaults.standard.string(forKey: "userid") {
+            roomId = String(roomData!.roomId)
+            
+            getAttendanceStatus(userId: userId, roomId: roomId!)
+            populatitonLabel.text = "\(checked.count) / \(checked.count + unchecked.count) 명 출석중"
+            
+            timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(autoRefresh), userInfo: ["userId": userId], repeats: true)
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    @objc func autoRefresh(_ notification: NSNotification) {
+        getAttendanceStatus(userId: notification.userInfo?["userId"] as! String, roomId: roomId!)
+    }
+    
+    func getAttendanceStatus(userId: String, roomId: String) {
+        
+        let parameters = ["user_id": userId, "room_id": roomId]
+        
+        networkingService.request(endpoint: "/room/attendance/check", parameters: parameters, completion: { [weak self] (result) in
+            
+            print(result)
+            switch result {
+                
+            case .success(let students):
+                self?.checked = (students?[0] as! [String]).sorted()
+                self?.unchecked = (students?[1] as! [String]).sorted()
+                self?.populatitonLabel.text = "\(self!.checked.count) / \(self!.checked.count + self!.unchecked.count) 명 출석중"
+                self?.tableView.reloadData()
+                
+            case .failure(let error):
+                self?.checked = []
+                self?.unchecked = []
+                print("getting student's attendance error", error) // did not enter any room yet
+                break
+            }
+        })
+    }
+    
+    @IBAction func didTapCompleteButton(_ sender: Any) {
+        guard let userId = UserDefaults.standard.string(forKey: "userid")
+            else { return }
+        
+        closeAttendance(userId: userId, roomId: roomId!)
+            
+    }
+    
+    func closeAttendance(userId: String, roomId: String) {
+        
+        let parameters = ["user_id": userId, "room_id": roomId]
+        
+        networkingService.request(endpoint: "/room/attendance/check/close", method: "PUT", parameters: parameters, completion: { [weak self] (result) in
+            
+            print(result)
+            switch result {
+                
+            case .success:
+                self?.navigationController?.popViewController(animated: true)
+            case .failure(let error):
+                print("closing attendance error", error) // did not enter any room yet
+                break
+            }
+        })
     }
     
     // MARK: - Table view data source
@@ -61,7 +135,6 @@ class CheckTableViewController: UIViewController, UITableViewDataSource, UITable
             
         } else {
             return UITableViewCell()
-            
         }
         
         return cell
