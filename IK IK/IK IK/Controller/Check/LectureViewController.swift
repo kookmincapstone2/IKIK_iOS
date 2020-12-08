@@ -23,6 +23,7 @@ class LectureViewController: UIViewController, UICollectionViewDataSource, UICol
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "LectureCell", bundle: .main), forCellWithReuseIdentifier: "LectureCell")
+        collectionView.layer.cornerRadius = 10
         setupFlowLayout()
         
         if let userId = UserDefaults.standard.string(forKey: "userid") {
@@ -51,14 +52,36 @@ class LectureViewController: UIViewController, UICollectionViewDataSource, UICol
         })
     }
     
+    
+    // MARK: - collectionView
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if (self.roomList.count == 0) {
+            self.collectionView.setEmptyMessage("아직 출석할 수업이 없어요 😅")
+        } else {
+            self.collectionView.restore()
+        }
+        
         return roomList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LectureCell", for: indexPath) as? LectureCell else {
             return UICollectionViewCell()
         }
+        
+        cell.layer.cornerRadius = 10.0
+        cell.layer.masksToBounds = true;
+        
+        cell.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.layer.shadowOffset = CGSize(width:0,height: 2.0)
+        cell.layer.shadowRadius = 10.0
+        cell.layer.shadowOpacity = 0.9
+        cell.layer.masksToBounds = false;
+        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.layer.cornerRadius).cgPath
+
         
         cell.titleLabel.text = roomList[indexPath.row].title
         cell.titleLabel.adjustsFontSizeToFitWidth = true
@@ -84,15 +107,16 @@ class LectureViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
-    private func setupFlowLayout() {    // CollectionView Cell 크기 바꾸는 함수
+    private func setupFlowLayout() {
+        // CollectionView Cell 크기 바꾸는 함수
         let flowLayout = UICollectionViewFlowLayout()
         
-        flowLayout.sectionInset = UIEdgeInsets.zero 
+        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         flowLayout.minimumInteritemSpacing = 10
         flowLayout.minimumLineSpacing = 24
         
         let halfWidth = UIScreen.main.bounds.width / 2
-        flowLayout.itemSize = CGSize(width: halfWidth * 0.85 , height: halfWidth * 0.85)
+        flowLayout.itemSize = CGSize(width: halfWidth * 0.80 , height: halfWidth * 0.80)
         
         self.collectionView.collectionViewLayout = flowLayout
     }
@@ -105,5 +129,24 @@ class LectureViewController: UIViewController, UICollectionViewDataSource, UICol
             destination.roomData = selected
             destination.previousVC = self
         }
+    }
+}
+
+extension UICollectionView {
+    
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+        messageLabel.sizeToFit()
+        
+        self.backgroundView = messageLabel;
+    }
+    
+    func restore() {
+        self.backgroundView = nil
     }
 }
