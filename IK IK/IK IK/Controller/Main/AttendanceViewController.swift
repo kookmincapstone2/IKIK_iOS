@@ -10,15 +10,18 @@ import UIKit
 
 class AttendanceViewController: UIViewController, UITableViewDataSource {
     
+    var userId: String?
+    var roomData: Room?
+    var dates = [String]()
+    var images = [String?]()
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var attendanceRateLabel: UILabel!
     @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var tableView: UITableView!
     
-    var roomData: Room?
-    var dates: [String] = ["2020년 9월 2일 (수)", "2020년 9월 9일 (수)", "2020년 9월 16일 (수)", "2020년 9월 23일 (수)"
-                            , "2020년 9월 30일 (수)", "2020년 10월 7일 (수)"]
-    var images: [String?] = ["checkmark.circle", "xmark.circle", "xmark.circle", "checkmark.circle", "checkmark.circle", "checkmark.circle"]
+    let networkingService = NetworkingService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +30,49 @@ class AttendanceViewController: UIViewController, UITableViewDataSource {
             self.navigationItem.rightBarButtonItem = nil
         } else {
             self.navigationItem.rightBarButtonItem = self.editBarButtonItem
+            userId = UserDefaults.standard.string(forKey: "userid")
         }
         
         titleLabel.text = roomData?.title
         detailLabel.text = roomData?.inviteCode
-        // TODO - 출석일수 받아오게
-        let days = 5
-        let total = 30
-        let rate = round(Double(days*10^3) / Double(total) * 10) / 10
+        
+        if let roomId = roomData?.roomId {
+            getAttendances(userId: userId!, roomId: String(roomId))
+        }
+    }
+    
+    func getAttendances(userId: String, roomId: String) {
+        let parameters = ["user_id": userId, "room_id": roomId]
+        networkingService.request(endpoint: "/room/attendance/check/all", parameters: parameters, completion: { [weak self] (result) in
+            
+            print(result)
+            switch result {
+                
+            case .success(let attendanceDict):
+                
+                for (date, isChecked) in attendanceDict![0] as! [String:Bool] {
+                    self?.dates.append(date)
+                    
+                    let image: String = isChecked ? "checkmark.circle" : "xmark.circle"
+                    self?.images.append(image)
+                }
+                self?.tableView.reloadData()
+                self?.updateRate()
+                
+            case .failure(let error):
+                self?.dates = []
+                self?.images = []
+                print("getting student list error", error) // did not enter any room yet
+                break
+            }
+        })
+    }
+    
+    func updateRate() {
+        let days = images.filter { $0 == "checkmark.circle" }.count
+        let total = dates.count
+        let rate = round(Double(days * 100) / Double(total) * 10) / 10
+        
         attendanceRateLabel.text = "출석율 \(days)/\(total) ( \(rate)% )"
     }
     
