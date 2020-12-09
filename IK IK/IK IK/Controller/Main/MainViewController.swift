@@ -31,7 +31,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let name = UserDefaults.standard.string(forKey: "username"),
             let userId = UserDefaults.standard.string(forKey: "userid") {
             
-            nameLabel.text = "안녕하세요, \(name.capitalized)님"
+            nameLabel.text = "안녕하세요, \(name.capitalized)님 😊"
             getMyRooms(userId: Int(userId)!)
         }
         
@@ -42,11 +42,23 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     @objc func reload(_ notification: Notification) {
         if let room = notification.userInfo?["room"] as? Room {
             if let found = myRoomList.firstIndex(where: { $0.roomId == room.roomId }) {
                 myRoomList[found] = room
             }
+//        } else if let userId = notification.userInfo?["user_id"] as? Int {
+//            getMyRooms(userId: userId)
         }
         self.mainTableView.reloadData()
     }
