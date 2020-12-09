@@ -10,13 +10,9 @@ import UIKit
 import AVFoundation
 
 class StudentCheckViewController: UIViewController {
-
+    
     var roomTitle: String?
     var roomId: Int?
-
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var passNumTextField: UITextField!
-//    @IBOutlet weak var blurEffectView: UIVisualEffectView!
     var blurEffectView: UIVisualEffectView {
         
         let blurEffect = UIBlurEffect(style: .dark)
@@ -28,14 +24,14 @@ class StudentCheckViewController: UIViewController {
         innerVisualEffectView.frame = self.view.frame
         
         outerVisualEffectView.contentView.addSubview(innerVisualEffectView)
-
+        
         let image = UIImage.init(systemName: "checkmark.seal.fill")
         let imageView = UIImageView()
         imageView.frame = CGRect(x: UIScreen.main.bounds.height/8, y: UIScreen.main.bounds.width/1.5, width: 170, height: 170)
         imageView.contentMode = .scaleAspectFit
         imageView.image = image?.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = UIColor.init(named: "AppMainColor")
-
+        
         innerVisualEffectView.contentView.addSubview(imageView)
         
         let label = UILabel()
@@ -49,12 +45,16 @@ class StudentCheckViewController: UIViewController {
         return outerVisualEffectView
     }
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var passNumTextField: UITextField!
+    
     let session = AVCaptureSession()
+    let alertService = AlertService()
     let networkingService = NetworkingService()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         titleLabel.text = "'\(roomTitle!)'"
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -114,15 +114,17 @@ class StudentCheckViewController: UIViewController {
             switch result {
                 
             case .success:
+                self?.view.endEditing(true)
                 self?.view.addSubview(self!.blurEffectView)
+                self?.navigationController?.setNavigationBarHidden(false, animated: true)
                 
             case .failure(let error):
-                // did not enter any room yet
+                guard let alert = self?.alertService.alert(message: "지금은 출석할 수 없습니다!") else { return }
+                print(alert)
+                self?.present(alert, animated: true)
                 print("pass num creation error", error)
-
             }
-            self?.dismiss(animated: true, completion: nil)
+            //            self?.dismiss(animated: true, completion: nil)
         })
     }
-
 }
