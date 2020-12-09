@@ -8,10 +8,11 @@
 
 import UIKit
 
-class StudentsViewController: UIViewController, UITableViewDataSource {
+class StudentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var userId: String?
     var roomData: Room?
-    var students = [String]()
+    var students = [(String, Int, Double?)]()
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
@@ -38,7 +39,9 @@ class StudentsViewController: UIViewController, UITableViewDataSource {
             switch result {
                 
             case .success(let studentList):
-                self?.students = (studentList as! [User])[1...].map({$0.name}).sorted(by: <)
+                self?.students = (studentList as! [User])
+                    .map{ ($0.name, $0.userId, $0.rateInfo!["rate"]) }
+                    .sorted {$0.0 < $1.0}
                 self?.detailLabel.text = "\(self!.students.count) / \(self!.roomData!.maximumPopulation) 명 참여중"
                 self?.studentTableView.reloadData()
                 
@@ -68,14 +71,29 @@ class StudentsViewController: UIViewController, UITableViewDataSource {
         
         cell.idLabel.text = "2020101\(indexPath.row)"
         
-        let name = students[indexPath.row]
+        let name = students[indexPath.row].0
         cell.nameLabel.text = name
+        
+        let rate = students[indexPath.row].2
+        cell.attendancePercentageLabel.text = "출석율: \(round(rate! * 1000)/10) % "
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        userId = String(students[indexPath.row].1)
+        
+        let attendanceVC = (self.storyboard?.instantiateViewController(withIdentifier: "attendanceVC")) as! AttendanceViewController
+        attendanceVC.userId = userId
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        performSegue(withIdentifier: "attendanceView", sender: tableView)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -92,6 +110,11 @@ class StudentsViewController: UIViewController, UITableViewDataSource {
         } else if segue.identifier == "editView" {
             let destination = segue.destination as! RoomEditViewController
             destination.roomData = roomData
+            
+        } else if segue.identifier == "attendanceView" {
+            let destination = segue.destination as! AttendanceViewController
+            destination.roomData = roomData
+            destination.userId = userId
         }
     }
 }
